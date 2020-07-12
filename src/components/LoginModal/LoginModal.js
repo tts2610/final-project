@@ -69,6 +69,7 @@ export default function LoginModal() {
   };
 
   const handleGoogle = async (resp) => {
+    console.log(resp);
     if (resp && resp.accessToken) {
       const user = await responseGoogle(resp);
       if (user instanceof Error) {

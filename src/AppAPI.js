@@ -15,7 +15,9 @@ export const responseFacebook = async (data) => {
 export const responseGoogle = async (response) => {
   if (response && response.accessToken) {
     try {
+      console.log("concac");
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/login/google?token=${response.accessToken}`);
+
       const { user, token } = res.data.data;
       localStorage.setItem("token", token);
       return user;
