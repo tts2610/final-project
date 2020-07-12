@@ -1,38 +1,85 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: "Nunito Sans", sans-serif !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+    max-width: 1200px !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.img-zig-zag {
+    position: relative;
+    top: -5px;
+    bottom: -1px;
+    left: 0;
+    content: "";
+    background: url(http://codenpixel.com/demo/foodpicky/images/zig-zag.png);
+    width: 100%;
+    height: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.fa-star {
+    color: yellow;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.facebook-btn {
+    width: 100%;
+    height: 47px;
+    background: #3b5998;
+    color: white;
+    border: 0px transparent;
+    text-align: center;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 0.6rem !important;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; */
+}
+
+.google-btn {
+    margin-top: 10px;
+    width: 100%;
+    /* height: 35px; */
+    border-radius: 4px;
+    /* background: #db3236; */
+    border: 0px transparent;
+    text-align: center;
+    justify-content: center;
+    box-shadow: none !important;
+    border: 1px solid rgb(207, 207, 207) !important;
+    border-radius: 0.6rem !important;
+    font-weight: bolder !important;
+    font-family: "Nunito Sans", sans-serif !important;
+    font-size: 15px !important;
+    color: black !important;
+}
+
+.google-btn div {
+    margin-right: 0px !important;
+}
+
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+}
+
+.main-btn {
+    background-color: rgb(237, 90, 107) !important;
+    border: none !important;
+}
+
+.modal-body {
+    padding: 1.5rem !important;
+}
+
+.modal-footer {
+    padding: 1.5rem !important;
 }

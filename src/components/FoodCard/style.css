@@ -1,0 +1,78 @@
+.img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.row-overlay {
+    margin-top: 124px;
+}
+
+.row-overlay .badge-col {
+    text-align: end;
+}
+
+#card-info .address-row {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 7px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.address-row .restaurant-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.address-row .restaurant-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.address-row .restaurant-ratings {
+    border-left: 1px solid #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+#card-info:hover~#card-img-top {
+    transform: scale(1.1, 1.1);
+}
+
+.card:hover .card-body .card-title {
+    color: tomato;
+}
+
+.card:hover .row .restaurantName {
+    color: tomato;
+}
+
+.card {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.card .card-img-top {
+    transition: all 0.5s ease-in-out;
+}
+
+.card .img-zig-zag {
+    transition: all 1s ease-in-out;
+}
+
+.card:hover #card-img-top {
+    transform: scale(1.1, 1.1);
+}
+
+.card:hover .img-zig-zag {
+    transform: scale(1.1, 1.1);
+}
