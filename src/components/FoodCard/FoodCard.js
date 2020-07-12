@@ -5,7 +5,7 @@ export default function FoodCard() {
   return (
     <div>
       <Card id="card-info">
-        <Card.Img id="card-img-top" variant="top" src="http://codenpixel.com/demo/foodpicky/images/food1.jpg" />
+        <Card.Img id="card-img-top" variant="top" src="https://codenpixel.com/demo/foodpicky/images/food1.jpg" />
         <Card.ImgOverlay className="text-white img-overlay">
           <Row>
             <Col>
@@ -42,7 +42,7 @@ export default function FoodCard() {
           <Col sm={9}>
             <Row>
               <Col sm={3} className="restaurant-img">
-                <img src="http://codenpixel.com/demo/foodpicky/images/logo2.png"></img>
+                <img src="https://codenpixel.com/demo/foodpicky/images/logo2.png"></img>
               </Col>
               <Col sm={9} className="restaurant-info">
                 <div className="restaurantName">Chicken Restaurant</div>
