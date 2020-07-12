@@ -83,3 +83,68 @@ hr {
 .modal-footer {
     padding: 1.5rem !important;
 }
+
+.pageSlider-exit .page {
+    z-index: 1;
+}
+
+.pageSlider-enter .page {
+    z-index: 10;
+}
+
+.pageSlider-enter.left .page {
+    transform: translate3d(100%, 0, 0);
+}
+
+.pageSlider-enter.right .page {
+    transform: translate3d(-100%, 0, 0);
+}
+
+.pageSlider-exit.left .page {
+    transform: translate3d(-100%, 0, 0);
+}
+
+.pageSlider-exit.right .page {
+    transform: translate3d(100%, 0, 0);
+}
+
+.pageSlider-enter.pageSlider-enter-active .page {
+    transform: translate3d(0, 0, 0);
+    transition: all 800ms ease-in-out;
+}
+
+.root-page {
+    background-image: url("/images/first-page-banner-3.jpg");
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.root-page .container {
+    height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.root-page .findAdress-form {
+    /* height: 40%; */
+    width: 30%;
+    padding: 50px 20px 50px 20px;
+    border-radius: 5px;
+    /* padding-top: 20vh; */
+    background-color: white;
+}
+
+.root-page .findAdress-form button {
+    width: 100%;
+}
+
+.dark-blue {
+    color: #3b5998;
+}
+
+.light-blue {
+    color: #55acee;
+}

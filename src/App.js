@@ -1,43 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
-// import MyMap from "./components/MyMap";
-import FoodCard from "./components/FoodCard/FoodCard";
-import { CardDeck, Container } from "react-bootstrap";
-import parse from "html-react-parser";
-// import axios from "axios";
-import Header from "./components/Header/Header";
-import LoginModal from "./components/LoginModal/LoginModal";
-import SignupModal from "./components/SignupModal/SignupModal";
+import { withRouter, Switch, Route, Link } from "react-router-dom";
+import FourOhFourPage from "./FourOFour";
+import Home from "./Home";
+import Root from "./Root";
 
-export default function App() {
-  // state = {
-  //   desc: "<h1>sdcsDC</h1>",
-  // };
-  // const [desc, setDesc] = useState("");
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Footer from "./components/Footer/Footer";
 
-  // useEffect(() => {
-  //   // axios.get(`https://foody-clone.herokuapp.com/restaurants`).then((res) => {
-  //   //   const persons = res.data;
-  //   //   setDesc(persons);
-  //   // });
-  // }, []);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      prevDepth: this.getPathDept(this.props.location),
+    };
+  }
 
-  return (
-    <>
-      <Header />
-      <Container className="mt-2">
-        {/* <div>{parse(`${desc}`)}</div> */}
-        {/* <MyMap></MyMap> */}
+  componentWillReceiveProps() {
+    this.setState({ prevDepth: this.getPathDept(this.props.location) });
+  }
 
-        <CardDeck>
-          <FoodCard></FoodCard>
-          <FoodCard></FoodCard>
-          <FoodCard></FoodCard>
-        </CardDeck>
-      </Container>
+  getPathDept(location) {
+    let pathArr = location.pathname.split("/");
+    pathArr = pathArr.filter((n) => n !== "");
+    return pathArr.length;
+  }
 
-      <LoginModal />
-      <SignupModal />
-    </>
-  );
+  render() {
+    const { location } = this.props;
+    const timeout = { enter: 1000, exit: 400 };
+    const currentKey = location.pathname.split("/")[1] || "/";
+    return (
+      <div>
+        <TransitionGroup component="div">
+          <CSSTransition key={currentKey} timeout={timeout} classNames="pageSlider" mountOnEnter={false} unmountOnExit={true}>
+            <div className={this.getPathDept(location) - this.state.prevDepth >= 0 ? "left" : "right"}>
+              <Switch location={location}>
+                <Route exact path="/" component={Root} />
+                <Route exact path="/index" component={Home} />
+              </Switch>
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
+        <Switch>
+          <Route exact path="/404" component={FourOhFourPage} />
+        </Switch>
+      </div>
+    );
+  }
 }
+
+export default withRouter(App);
