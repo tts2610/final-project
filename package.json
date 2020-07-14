@@ -24,7 +24,8 @@
         "react-transition-group": "^4.4.1",
         "recompose": "^0.30.0",
         "redux": "^4.0.5",
-        "styled-components": "^5.1.1"
+        "styled-components": "^5.1.1",
+        "write-file-p": "^1.0.7"
     },
     "scripts": {
         "start": "HTTPS=true react-scripts start",

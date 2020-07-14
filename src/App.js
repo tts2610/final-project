@@ -7,7 +7,7 @@ import Root from "./Root";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Footer from "./components/Footer/Footer";
-import MyMap from "./components/MyMap";
+import MyMap from "./components/Map/MyMap";
 
 class App extends Component {
   constructor(props) {

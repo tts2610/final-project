@@ -19,6 +19,10 @@
     border-top: 1px solid #e3e3e3;
 }
 
+#card-info img {
+    max-width: 360px;
+}
+
 .address-row .restaurant-img {
     display: flex;
     justify-content: center;
