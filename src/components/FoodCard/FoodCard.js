@@ -5,7 +5,7 @@ export default function FoodCard() {
   return (
     <div>
       <Card id="card-info">
-        <Card.Img id="card-img-top" variant="top" src="https://codenpixel.com/demo/foodpicky/images/food1.jpg" />
+        <Card.Img id="card-img-top" variant="top" width="320" height="210" src="https://d1sag4ddilekf6.cloudfront.net/compressed/merchants/VNGFVN000000o0/hero/0ba7b857c27649cd8f60ff8076d2f3cf_1589130577883791718.jpg" />
         <Card.ImgOverlay className="text-white img-overlay">
           <Row>
             <Col>

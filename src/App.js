@@ -7,6 +7,7 @@ import Root from "./Root";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Footer from "./components/Footer/Footer";
+import MyMap from "./components/Map/MyMap";
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends Component {
         </TransitionGroup>
         <Switch>
           <Route exact path="/404" component={FourOhFourPage} />
+          <Route exact path="/my-map" component={MyMap} />
         </Switch>
       </div>
     );
