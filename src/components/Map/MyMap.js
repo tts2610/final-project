@@ -23,6 +23,8 @@ export default function MyMap() {
   };
 
   const generateData = () => {
+    var directionsService = new window.google.maps.DirectionsService();
+    var directionsRenderer = new window.google.maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true });
     setIsLoading(false);
     let coord = { lat: lat, lng: long };
     map = new window.google.maps.Map(document.getElementById("map"), {
@@ -30,6 +32,9 @@ export default function MyMap() {
       center: coord,
       zoom: 17,
     });
+
+    directionsRenderer.setMap(map);
+
     var marker = new window.google.maps.Marker({ position: coord, map: map, animation: window.google.maps.Animation.BOUNCE });
 
     var pyrmont = new window.google.maps.LatLng(lat, long);
@@ -48,10 +53,12 @@ export default function MyMap() {
           let place = results[i];
           data[i]["latitude"] = place.geometry.location.lat().toString();
           data[i]["longitude"] = place.geometry.location.lng().toString();
+          // data[i]["distance"] = distance(lat, long, place.geometry.location.lat(), place.geometry.location.lng());
           data[i]["address"] = place.vicinity;
-          console.log(data[i]);
+          data[i]["averageRating"] = place.rating;
+
           const res = await uploadRestaurants(data[i]);
-          console.log(res);
+          console.log(place);
           var image = {
             url: "/images/restaurant_icon.png",
             size: new window.google.maps.Size(75, 75),
@@ -60,6 +67,10 @@ export default function MyMap() {
             scaledSize: new window.google.maps.Size(35, 35),
           };
           window.setTimeout(function () {
+            var contentString = '<div id="content">' + "test" + "</div>";
+            var infowindow = new window.google.maps.InfoWindow({
+              content: contentString,
+            });
             var marker = new window.google.maps.Marker({
               map: map,
               icon: image,
@@ -67,11 +78,42 @@ export default function MyMap() {
               position: place.geometry.location,
               animation: window.google.maps.Animation.DROP,
             });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              calcRoute(new window.google.maps.LatLng(lat, long), new window.google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()), directionsService, directionsRenderer);
+            });
           }, i * 200);
         }
       }
     });
   };
+
+  function calcRoute(origin, destination, directionsService, directionDisplay) {
+    console.log(origin, destination);
+    // var selectedMode = document.getElementById('mode').value;
+    var request = {
+      origin,
+      destination,
+      // Note that JavaScript allows us to access the constant
+      // using square brackets and a string value as its
+      // "property."
+      travelMode: "DRIVING",
+    };
+    directionsService.route(request, function (response, status) {
+      if (status == "OK") {
+        console.log(response);
+        directionDisplay.setDirections(response);
+      }
+    });
+  }
+
+  function distance(lat1, lon1, lat2, lon2) {
+    var p = 0.017453292519943295; // Math.PI / 180
+    var c = Math.cos;
+    var a = 0.5 - c((lat2 - lat1) * p) / 2 + (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
+
+    return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+  }
 
   const createMarkers = (places) => {
     var bounds = new window.google.maps.LatLngBounds();

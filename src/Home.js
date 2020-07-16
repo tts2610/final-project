@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // import MyMap from "./components/MyMap";
 import FoodCard from "./components/FoodCard/FoodCard";
-import { CardDeck, Container, Button } from "react-bootstrap";
+import { CardDeck, Container, Button, Spinner } from "react-bootstrap";
 import parse from "html-react-parser";
 // import axios from "axios";
 import Header from "./components/Header/Header";
@@ -10,19 +10,28 @@ import LoginModal from "./components/LoginModal/LoginModal";
 import SignupModal from "./components/SignupModal/SignupModal";
 import { Link } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
+import { getRestaurantList } from "./AppAPI";
 
 export default function Home() {
+  const [restaurants, setRestaurants] = useState([]);
   // state = {
   //   desc: "<h1>sdcsDC</h1>",
   // };
   // const [desc, setDesc] = useState("");
 
-  // useEffect(() => {
-  //   // axios.get(`https://foody-clone.herokuapp.com/restaurants`).then((res) => {
-  //   //   const persons = res.data;
-  //   //   setDesc(persons);
-  //   // });
-  // }, []);
+  useEffect(async () => {
+    const res = await getRestaurantList();
+    if (!(res instanceof Error)) {
+      setRestaurants(res);
+
+      if (!localStorage.getItem("lat") && !localStorage.getItem("lon")) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          localStorage.setItem("lat", position.coords.latitude);
+          localStorage.setItem("lon", position.coords.longitude);
+        });
+      }
+    }
+  }, []);
 
   return (
     <div className="page">
@@ -32,9 +41,16 @@ export default function Home() {
         {/* <MyMap></MyMap> */}
 
         <CardDeck>
-          <FoodCard></FoodCard>
-          <FoodCard></FoodCard>
-          <FoodCard></FoodCard>
+          {restaurants.length > 0 ? (
+            restaurants.map((item, indx) => {
+              return <FoodCard key={indx} item={item}></FoodCard>;
+            })
+          ) : (
+            <Spinner animation="border" variant="danger" />
+          )}
+
+          {/* <FoodCard></FoodCard>
+          <FoodCard></FoodCard> */}
         </CardDeck>
 
         {/* <Link to="/root">

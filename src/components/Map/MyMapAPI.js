@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const uploadRestaurants = async (restaurant) => {
+  console.log(restaurant);
   try {
     const res = await axios.post(`${process.env.REACT_APP_API_URL}/restaurants/`, restaurant);
     return res;

@@ -1,6 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Button, Container, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { Button, Container, Form, Spinner } from "react-bootstrap";
+import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
+import "@reach/combobox/styles.css";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 
 export default function Root() {
   return (
@@ -11,14 +14,69 @@ export default function Root() {
           <h1>Let's explore good food near you.</h1>
           <Form className="mt-4">
             <Form.Group controlId="formBasicEmail">
-              <Form.Control className="mb-2" type="email" placeholder="Your address..." />
-              <Link to="/index">
-                <Button className="main-btn">Find</Button>
-              </Link>
+              <div className="search">
+                <Search />
+              </div>
             </Form.Group>
           </Form>
         </div>
       </Container>
     </div>
+  );
+}
+
+function Search() {
+  const history = useHistory();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+  } = usePlacesAutocomplete();
+  const [coordinates, setCoordinates] = useState({
+    lat: null,
+    lng: null,
+  });
+
+  const handleSelect = async (value) => {
+    setValue(value, false);
+    const parameter = {
+      address: value,
+    };
+    getGeocode(parameter)
+      .then((results) => getLatLng(results[0]))
+      .then((latLng) => setCoordinates(latLng));
+  };
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  const onClickFind = async (value) => {
+    setIsLoading(true);
+
+    // send to store(redux)
+    setTimeout(() => {
+      setCoordinates({ lat: null, lng: null });
+      setIsLoading(false);
+      history.push("/my-map");
+    }, 2000);
+  };
+
+  return (
+    <>
+      <div>Latitude: {coordinates.lat}</div>
+      <div>Longitude: {coordinates.lng}</div>
+      <Combobox className="mb-3" onSelect={handleSelect} aria-labelledby="demo">
+        <ComboboxInput value={value} onChange={handleChange} placeholder="Your address..." />
+        <ComboboxPopover>
+          <ComboboxList>{status === "OK" && data.map(({ id, description }) => <ComboboxOption key={id} value={description} />)}</ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
+      <Button onClick={() => onClickFind()} className="main-btn">
+        Find {isLoading && <Spinner size="sm" animation="border" variant="light" />}
+      </Button>
+    </>
   );
 }

@@ -153,3 +153,25 @@ hr {
 .light-blue {
     color: #55acee;
 }
+
+
+/* .search {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    z-index: 10;
+} */
+
+.search input {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.card-deck {
+    display: flex;
+    justify-content: center;
+}

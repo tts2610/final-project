@@ -6,6 +6,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["milk tea"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/66a8657cb100483e906b984b50a7eaad_1571898323162358754_ifgoir.jpg"
     },
     {
@@ -16,6 +17,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["noodles"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/5865dad572e140c9af01893cd7945c23_1590750361228383300_zatwcz.jpg"
     },
     {
@@ -26,6 +28,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["bread"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/4de1536d0966486ab90e7ed56a699d73_1574405425726557075_wc6dcl.jpg"
     },
     {
@@ -36,6 +39,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["rice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/a581e0119ef94c738c73ab74d342d837_1573199174750908848_fbgklz.jpg"
     },
     {
@@ -46,6 +50,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["milk tea"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/4c732b08670a4bd59b97c9c00d3bc4d8_1594573080797387159_j3o1ic.jpg"
     },
     {
@@ -56,6 +61,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["fast food", "desert"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/8c061e89b33b4ecea250168d7ce10440_1592153401713289702_f39vgl.jpg"
     },
     {
@@ -66,6 +72,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["milk tea", "bread"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/fb40315649904a8d972266802f5a5ab3_1587722201642710285_hmq7dz.jpg"
     },
     {
@@ -76,6 +83,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["milk tea", "rice", "desert"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/856d53ef149f4df99aa1be5232320797_1593361440868653867_cgzrhy.jpg"
     },
     {
@@ -86,6 +94,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["milk tea", "hotspot", "grill"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657981/Images/a12dacddfe5a4f63aab31f16f1d46f62_1587918300926253663_rbhaul.jpg"
     },
     {
@@ -96,6 +105,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["snack"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/9d02713cb9aa40b587bcb13279ffeee4_1593966360385402316_fz8od9.jpg"
     },
     {
@@ -106,6 +116,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["noodles", "desert", "bread"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/cfefbcc64d4947858714297fc6c39de3_1594321200390943055_pjornb.jpg"
     },
     {
@@ -116,6 +127,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["juice", "fast food", "hotspot"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/201f13bee2cf4595b8765774c562069c_1594269685094987277_qek6f5.jpg"
     },
     {
@@ -126,6 +138,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["hotspot", "bread", "rice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/12e4fd6df9434f96a77e1eb158a696c9_1594126021078287370_zowbze.jpg"
     },
     {
@@ -136,6 +149,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["juice", "fast food", "rice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/112909dcaf0a49e5aea618020d62dee4_1593363123876845291_q58mbc.jpg"
     },
     {
@@ -146,6 +160,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["rice", "noodles", "snack"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/b6bae5e15bc745eb8e4ebee8a3c9bef7_1592999402543984393_atdsiq.jpg"
     },
     {
@@ -156,6 +171,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["grill", "juice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/91792aa425354080b166b4f2af858bb2_1593363120568771245_jf5cn0.jpg"
     },
     {
@@ -166,6 +182,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["noodles", "rice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594657980/Images/4198febaa8ac404aa69f3ebe0851580b_1589452169377767107_gr9s9b.jpg"
     },
     {
@@ -176,6 +193,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["hotspot", "noodles", "fast food"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655528/Images/0ba7b857c27649cd8f60ff8076d2f3cf_1589130577883791718_2_mmbu0k.jpg"
     },
     {
@@ -186,6 +204,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["snack", "hotspot"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655528/Images/e5f6c5f6a70449448bcbf538c215e483_1593535200124860620_asvnhw.jpg"
     },
     {
@@ -196,6 +215,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["milk tea", "rice", "grill"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655528/Images/e0f97e3190ff4286931de7bd627534cb_1593535200591783370_j9bzkc.jpg"
     },
     {
@@ -206,6 +226,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["milk tea", "noodles", "snack"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655528/Images/c4fd6bb90468463d99fb20a457c2f801_1593361440996217898_qi3zxi.jpg"
     },
     {
@@ -216,6 +237,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["grill", "juice", "bread"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655527/Images/b90c86dc0cb04d689c80b50039739c75_1594093767120019480_esv8dh.jpg"
     },
     {
@@ -226,6 +248,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["bread", "hotspot", "rice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655527/Images/b852d6b76b5f4baa8bbc5f04602f4afd_1587312481893208115_upm67k.jpg"
     },
     {
@@ -236,6 +259,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["snack", "milk tea", "desert"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655527/Images/4a9c206b4fdf402f8e8a35d4bfac7d57_1592152920389111773_mkqj3s.jpg"
     },
     {
@@ -246,6 +270,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["hotspot", "juice", "milk tea"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655527/Images/c410a373cf504bf398aba8685ab07ed8_1594572480471604768_i5kfym.jpg"
     },
     {
@@ -256,6 +281,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["grill", "fast food"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655527/Images/1ed0e5ec4ef546a39e5dc6bae9d1697b_1589130589850273428_d30854.jpg"
     },
     {
@@ -266,6 +292,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["desert", "bread", "juice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655526/Images/377d0a93bbac43c1b42c89cdd6f3751a_1583389324119065225_qadbn1.jpg"
     },
     {
@@ -276,6 +303,7 @@
         "latitude": "",
         "owner_id": "5f0ab018df99fb0017a06811",
         "introduction": "",
+        "tags": ["milk tea", "noodles", "grill"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655526/Images/78d9dc9a6fba4b439fc416e7ecfcd25d_1593361440938290373_d5hcje.jpg"
     },
     {
@@ -286,6 +314,7 @@
         "latitude": "",
         "owner_id": "5f0ab2eadc2bc10017ac978d",
         "introduction": "",
+        "tags": ["hotspot", "juice", "rice"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655526/Images/9dd726ca7b5249a387a8b93309ea86fc_1589130575727795097_ygntnj.jpg"
     },
     {
@@ -296,6 +325,7 @@
         "latitude": "",
         "owner_id": "5f0c0f8459979600177f9600",
         "introduction": "",
+        "tags": ["milk tea", "desert", "fast food"],
         "image": "https://res.cloudinary.com/da5mx5vau/image/upload/v1594655526/Images/55243da86a8042cf8ae118abbb99f8c0_1591548242739809438_vy27nl.jpg"
     }
 ]
