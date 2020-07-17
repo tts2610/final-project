@@ -19,6 +19,22 @@
     border-top: 1px solid #e3e3e3;
 }
 
+#card-info {
+    max-width: 340px;
+}
+
+#card-info .card-body .card-title,
+.card-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/* #card-info.second-card {
+    height: 290px;
+} */
+
 .address-row .restaurant-img {
     display: flex;
     justify-content: center;

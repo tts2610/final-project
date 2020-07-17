@@ -1,27 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Card, Col, Row, Badge } from "react-bootstrap";
 import "./style.css";
-export default function FoodCard() {
+import Rating from "@material-ui/lab/Rating";
+import { withStyles } from "@material-ui/core/styles";
+import { getDistance } from "./FoodCardAPI";
+
+export default function FoodCard({ item }) {
+  const [distance, setDistance] = useState(0);
+  const history = useHistory();
+  const StyledRating = withStyles({
+    iconFilled: {
+      color: "#FFFF00",
+    },
+  })(Rating);
+
+  const cardCliked = () => {
+    history.push({ pathname: `/restaurant/${item.name}+${item._id}` });
+  };
+
+  useEffect(() => {
+    async function getItemDistance() {
+      let distance = await getDistance({ lat1: localStorage.getItem("lat"), lon1: localStorage.getItem("lon"), lat2: item.latitude, lon2: item.longitude });
+      distance = distance * 1000;
+      setDistance(Math.floor(distance));
+    }
+    getItemDistance();
+  }, []);
+
   return (
-    <div>
+    <div className="mt-4 mr-4" onClick={cardCliked}>
       <Card id="card-info">
-        <Card.Img id="card-img-top" variant="top" src="https://codenpixel.com/demo/foodpicky/images/food1.jpg" />
+        <Card.Img id="card-img-top" variant="top" width="300" height="210" src={item.image} />
         <Card.ImgOverlay className="text-white img-overlay">
           <Row>
             <Col>
               <Badge className="py-2 px-2" variant="danger">
-                1240m
+                {distance} m
               </Badge>
             </Col>
             <Col></Col>
           </Row>
           <Row className="row-overlay">
             <Col>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
-              <i className="fa fa-star"></i>
+              <StyledRating name="half-rating-read" defaultValue={item.averageRating} precision={0.5} readOnly />
             </Col>
             <Col className="badge-col">
               <Badge className="py-2 px-2" variant="info">
@@ -31,12 +53,17 @@ export default function FoodCard() {
           </Row>
         </Card.ImgOverlay>
       </Card>
-      <Card id="card-info">
+      <Card id="card-info" className="second-card">
         {/* <div className="img-zig-zag"></div> */}
         <Card.Body>
-          <Card.Title>The South"s Best Fried Chicken</Card.Title>
-          <Card.Text>Fried Chicken with cheese</Card.Text>
-          <Card.Text className="font-weight-bold">$ 15,99</Card.Text>
+          <Card.Title>{item.name}</Card.Title>
+          <Card.Text>{item.address}</Card.Text>
+          <Card.Text className="font-weight-bold">{item.phoneNumber}</Card.Text>
+          {item.tags.map((item, indx) => (
+            <Badge key={indx} style={{ padding: "5px" }} className="mr-2" variant="success">
+              {item.title}
+            </Badge>
+          ))}
         </Card.Body>
         <Row className="address-row">
           <Col sm={9}>
