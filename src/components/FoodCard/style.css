@@ -23,9 +23,17 @@
     max-width: 340px;
 }
 
-#card-info.second-card {
-    min-height: 270px;
+#card-info .card-body .card-title,
+.card-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
+
+
+/* #card-info.second-card {
+    height: 290px;
+} */
 
 .address-row .restaurant-img {
     display: flex;

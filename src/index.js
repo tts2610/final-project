@@ -12,6 +12,7 @@ const initialState = {
   showLogin: false,
   showSignup: false,
   isUserLoaded: false,
+  searchParams: { tags: [], page: 1, perPage: 8, totalPage: 0 },
 };
 
 function reducer(state = initialState, action) {
@@ -21,6 +22,14 @@ function reducer(state = initialState, action) {
     state.showSignup = action.payload.showSignup;
   } else if (action.type === "USERLOADED") {
     state.isUserLoaded = action.payload.isUserLoaded;
+  } else if (action.type === "FILTER") {
+    let newParams = { ...state.searchParams };
+    for (const [key, value] of Object.entries(action.payload.searchParams)) {
+      newParams[key] = value;
+    }
+    state.searchParams = { ...newParams };
+    console.log(state.searchParams);
+    // state.isFiltering = action.payload.isFiltering;
   }
   state = { ...state };
   return state;

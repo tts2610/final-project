@@ -29,10 +29,10 @@ export const responseGoogle = async (response) => {
 export const getRestaurantList = async () => {
   try {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/`);
-    console.log(res.data.data.restaurantList);
+    // console.log(res.data.data.restaurantList);
     return res.data.data.restaurantList;
   } catch (error) {
-    console.log(error.response.message);
+    // console.log(error.response.message);
     return new Error(error.response.message);
   }
 };

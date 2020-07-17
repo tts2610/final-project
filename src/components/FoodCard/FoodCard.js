@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Card, Col, Row, Badge } from "react-bootstrap";
 import "./style.css";
 import Rating from "@material-ui/lab/Rating";
@@ -7,11 +8,16 @@ import { getDistance } from "./FoodCardAPI";
 
 export default function FoodCard({ item }) {
   const [distance, setDistance] = useState(0);
+  const history = useHistory();
   const StyledRating = withStyles({
     iconFilled: {
       color: "#FFFF00",
     },
   })(Rating);
+
+  const cardCliked = () => {
+    history.push({ pathname: `/restaurant/${item.name}+${item._id}` });
+  };
 
   useEffect(() => {
     async function getItemDistance() {
@@ -23,7 +29,7 @@ export default function FoodCard({ item }) {
   }, []);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 mr-4" onClick={cardCliked}>
       <Card id="card-info">
         <Card.Img id="card-img-top" variant="top" width="300" height="210" src={item.image} />
         <Card.ImgOverlay className="text-white img-overlay">
