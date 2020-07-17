@@ -39,7 +39,7 @@ class App extends Component {
             <div className={this.getPathDept(location) - this.state.prevDepth >= 0 ? "left" : "right"}> */}
         <Switch location={location}>
           <Route exact path="/" component={Root} />
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/index" component={Home} />
           <Route exact path="/404" component={FourOhFourPage} />
           <Route exact path="/my-map" component={MyMap} />
           <Route exact path="/restaurant/:res" component={RestaurantDetail} />
