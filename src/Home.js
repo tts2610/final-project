@@ -31,7 +31,7 @@ export default function Home() {
   // const [desc, setDesc] = useState("");
 
   const performFilter = (params) => {
-    let searchUrl = `http://localhost:5000/restaurants/search?tags=${params.tags}&averageRatingMin=${params.averageRating ? params.averageRating : ""}&page=${params.page}&&perPage=6`;
+    let searchUrl = `${process.env.REACT_APP_API_URL}/restaurants/search?tags=${params.tags}&averageRatingMin=${params.averageRating ? params.averageRating : ""}&page=${params.page}&&perPage=6`;
     axios.get(searchUrl).then(function (res) {
       // setTotalPage(res.data.data.pagination.totalPages);
 
