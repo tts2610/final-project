@@ -1,0 +1,12 @@
+.menu-row .col:hover {
+    border: 1px solid #00b14f;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 350px;
+    display: flex;
+}
+
+
+/* .menu-row .col {
+    margin: 20px 20px 20px 20px;
+} */

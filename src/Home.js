@@ -6,13 +6,12 @@ import { CardDeck, Container, Button, Spinner, CardGroup, Row, Col } from "react
 import parse from "html-react-parser";
 // import axios from "axios";
 import Header from "./components/Header/Header";
-import LoginModal from "./components/LoginModal/LoginModal";
-import SignupModal from "./components/SignupModal/SignupModal";
+
 import { Link } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import { getRestaurantList } from "./AppAPI";
 import { useSelector, useDispatch } from "react-redux";
-import { insertMenu } from "./HomeAPI";
+import { insertMenu, insertUser, insertReview } from "./HomeAPI";
 import Filters from "./components/Filter/Filters";
 import axios from "axios";
 import Chatbox from "./components/Chatbox/Chatbox";
@@ -70,7 +69,16 @@ export default function Home() {
     async function getMenu() {
       const menu = await insertMenu();
     }
+    async function getUser() {
+      const user = await insertUser();
+    }
+
+    async function getReviews() {
+      const review = await insertReview();
+    }
+    // getUser();
     getMenu();
+    // getReviews();
   }, [searchParams]);
 
   return (
@@ -123,9 +131,6 @@ export default function Home() {
       <Chatbox />
 
       <Footer />
-
-      <LoginModal />
-      <SignupModal />
     </div>
   );
 }

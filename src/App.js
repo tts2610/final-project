@@ -9,6 +9,8 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Footer from "./components/Footer/Footer";
 import MyMap from "./components/Map/MyMap";
 import RestaurantDetail from "./RestaurantDetail";
+import LoginModal from "./components/LoginModal/LoginModal";
+import SignupModal from "./components/SignupModal/SignupModal";
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +50,8 @@ class App extends Component {
           </CSSTransition>
         </TransitionGroup> */}
         <Switch></Switch>
+        <LoginModal />
+        <SignupModal />
       </div>
     );
   }

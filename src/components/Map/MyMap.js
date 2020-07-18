@@ -56,9 +56,10 @@ export default function MyMap() {
           // data[i]["distance"] = distance(lat, long, place.geometry.location.lat(), place.geometry.location.lng());
           data[i]["address"] = place.vicinity;
           data[i]["averageRating"] = place.rating;
+          data[i]["nRating"] = 1;
 
-          const res = await uploadRestaurants(data[i]);
-          console.log(place);
+          // const res = await uploadRestaurants(data[i]);
+          // console.log(place);
           var image = {
             url: "/images/restaurant_icon.png",
             size: new window.google.maps.Size(75, 75),

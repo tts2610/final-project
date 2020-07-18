@@ -1,0 +1,100 @@
+.container-fluid {
+    /* background-image: linear-gradient(to right, #7b1fa2, #e91e63); */
+}
+
+.sm-text {
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.sm-text-1 {
+    font-size: 14px;
+}
+
+.green-tab {
+    background-color: #00c853;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 3px 5px 3px;
+}
+
+.btn-red {
+    background-color: #e64a19 !important;
+    color: #fff !important;
+    border-radius: 20px !important;
+    border: none;
+    outline: none;
+}
+
+.btn-red:hover {
+    background-color: #bf360c;
+}
+
+.btn-red:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+.round-icon {
+    font-size: 40px;
+    padding-bottom: 10px;
+}
+
+.fa-circle {
+    font-size: 10px;
+    color: #eeeeef;
+}
+
+.green-dot {
+    color: #4caf50;
+}
+
+.red-dot {
+    color: #e64a19;
+}
+
+.yellow-dot {
+    color: #ffd54f;
+}
+
+.grey-text {
+    color: #bdbdbd;
+}
+
+.green-text {
+    color: #4caf50;
+}
+
+.red-text {
+    color: #e64a19;
+}
+
+.yellow-text {
+    color: #ffd54f;
+}
+
+.quill {
+    min-height: 18em;
+    width: 100%;
+}
+
+.block {
+    border-right: 1px solid #f5eeee;
+    border-top: 1px solid #f5eeee;
+    border-bottom: 1px solid #f5eeee;
+}
+
+.profile-pic img {
+    border-radius: 50%;
+}
+
+.rating-dot {
+    letter-spacing: 5px;
+}
+
+.via {
+    border-radius: 20px;
+    height: 28px;
+}
