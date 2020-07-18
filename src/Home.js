@@ -77,7 +77,7 @@ export default function Home() {
       const review = await insertReview();
     }
     // getUser();
-    getMenu();
+    // getMenu();
     // getReviews();
   }, [searchParams]);
 
