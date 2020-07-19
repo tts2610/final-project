@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // import MyMap from "./components/MyMap";
 import FoodCard from "./components/FoodCard/FoodCard";
-import { CardDeck, Container, Button, Spinner, CardGroup, Row, Col, Image } from "react-bootstrap";
+import { CardDeck, Container, Button, Spinner, CardGroup, Row, Col } from "react-bootstrap";
 import parse from "html-react-parser";
 // import axios from "axios";
 import Header from "./components/Header/Header";
@@ -32,7 +32,7 @@ export default function Home() {
 
   const performFilter = (params) => {
     // ${process.env.REACT_APP_API_URL}
-    let searchUrl = `${process.env.REACT_APP_API_URL}/restaurants/search?tags=${params.tags}&averageRatingMin=${params.averageRating ? params.averageRating : ""}&page=${params.page}&&perPage=6`;
+    let searchUrl = `http://localhost:5000/restaurants/search?tags=${params.tags}&averageRatingMin=${params.averageRating ? params.averageRating : ""}&page=${params.page}&&perPage=6`;
     console.log(searchUrl);
     axios.get(searchUrl).then(function (res) {
       // setTotalPage(res.data.data.pagination.totalPages);
@@ -86,11 +86,7 @@ export default function Home() {
 
   return (
     <div className="page">
-      <div>
-        <MyMap />
-        <Image width="100" height="100" style={{ cursor: "pointer", position: "absolute", zIndex: "10", top: "90%", left: "50%" }} src="https://media.giphy.com/media/Wtg8Bmgul1Qxc0otod/giphy.gif" alt="" />
-      </div>
-
+      <MyMap />
       <Header />
 
       {/* <div>{parse(`${desc}`)}</div> */}

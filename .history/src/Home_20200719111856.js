@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // import MyMap from "./components/MyMap";
 import FoodCard from "./components/FoodCard/FoodCard";
@@ -88,7 +88,7 @@ export default function Home() {
     <div className="page">
       <div>
         <MyMap />
-        <Image width="100" height="100" style={{ cursor: "pointer", position: "absolute", zIndex: "10", top: "90%", left: "50%" }} src="https://media.giphy.com/media/Wtg8Bmgul1Qxc0otod/giphy.gif" alt="" />
+        <Image width="100" height="100" style={{ position: "absolute", zIndex: "10", top: "0px", margin: "0 auto" }} src="https://media.giphy.com/media/kDxLHWhcHUM2JRDX9z/giphy.gif" alt="" />
       </div>
 
       <Header />

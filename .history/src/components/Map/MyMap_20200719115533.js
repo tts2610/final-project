@@ -1,9 +1,8 @@
 import React, { Component, useState, useEffect } from "react";
-import { Spinner, Image } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 
 import data from "../../urls.json";
 import { uploadRestaurants } from "./MyMapAPI";
-import { getMenuByRestaurantID } from "../../RestaurantDetailAPI";
 
 var map;
 
@@ -14,18 +13,6 @@ export default function MyMap() {
 
   const renderMap = () => {
     window.initMap = initMap();
-  };
-
-  const getMenu = async (id) => {
-    const menu = await getMenuByRestaurantID(id);
-    let arr = [];
-    for (let index = 0; index < 4; index++) {
-      const element = menu[index];
-      const item = `<Image width="50" height="50" src=${element.image}></Image>`;
-      arr.push(element.image);
-    }
-    console.log(arr);
-    return arr;
   };
 
   const initMap = () => {
@@ -71,8 +58,7 @@ export default function MyMap() {
           data[i]["averageRating"] = place.rating;
           data[i]["nRating"] = 1;
 
-          const res = await uploadRestaurants(data[i]);
-          let { restaurant } = res;
+          // const res = await uploadRestaurants(data[i]);
           // console.log(place);
           var image = {
             url: "/images/restaurant_icon.png",
@@ -81,13 +67,9 @@ export default function MyMap() {
             anchor: new window.google.maps.Point(17, 34),
             scaledSize: new window.google.maps.Size(35, 35),
           };
-          let list = await getMenu(restaurant._id);
-          // console.log(list)
           // eslint-disable-next-line no-loop-func
           window.setTimeout(function () {
-            var contentString = `<h1>${restaurant.name}</h1>
-            <div>${list && list.map((item) => `<Image width="80" height="80" src=${item}></Image>`)}</div>
-            <a className="mt-3" href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
+            var contentString = `<h1>${data[i].name}</h1>`;
             var infowindow = new window.google.maps.InfoWindow({
               content: contentString,
             });

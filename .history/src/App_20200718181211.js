@@ -42,7 +42,7 @@ class App extends Component {
         <Switch location={location}>
           <Route exact path="/home" component={Home} />
           <Route exact path="/404" component={FourOhFourPage} />
-          {/* <Route exact path="/my-map" component={MyMap} /> */}
+          <Route exact path="/my-map" component={MyMap} />
           <Route exact path="/restaurant/:res" component={RestaurantDetail} />
           <Route exact path="/" component={Root} />
         </Switch>

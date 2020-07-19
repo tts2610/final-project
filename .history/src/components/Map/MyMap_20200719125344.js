@@ -86,8 +86,8 @@ export default function MyMap() {
           // eslint-disable-next-line no-loop-func
           window.setTimeout(function () {
             var contentString = `<h1>${restaurant.name}</h1>
-            <div>${list && list.map((item) => `<Image width="80" height="80" src=${item}></Image>`)}</div>
-            <a className="mt-3" href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
+            <div>${list && list.map((item) => `<Image width="50" height="50" src=${item}></Image>`)}</div>
+            <a href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
             var infowindow = new window.google.maps.InfoWindow({
               content: contentString,
             });

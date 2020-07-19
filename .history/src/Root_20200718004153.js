@@ -60,7 +60,7 @@ function Search() {
     setTimeout(() => {
       setCoordinates({ lat: null, lng: null });
       setIsLoading(false);
-      history.push("/home");
+      history.push("/my-map");
     }, 2000);
   };
 

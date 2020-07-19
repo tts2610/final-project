@@ -19,12 +19,12 @@ export default function MyMap() {
   const getMenu = async (id) => {
     const menu = await getMenuByRestaurantID(id);
     let arr = [];
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < menu.length; index++) {
       const element = menu[index];
       const item = `<Image width="50" height="50" src=${element.image}></Image>`;
       arr.push(element.image);
     }
-    console.log(arr);
+    // console.log(arr);
     return arr;
   };
 
@@ -81,13 +81,12 @@ export default function MyMap() {
             anchor: new window.google.maps.Point(17, 34),
             scaledSize: new window.google.maps.Size(35, 35),
           };
-          let list = await getMenu(restaurant._id);
-          // console.log(list)
+          let list = getMenu(restaurant._id);
           // eslint-disable-next-line no-loop-func
           window.setTimeout(function () {
             var contentString = `<h1>${restaurant.name}</h1>
-            <div>${list && list.map((item) => `<Image width="80" height="80" src=${item}></Image>`)}</div>
-            <a className="mt-3" href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
+            <div>${list.map((item) => <Image width="50" height="50" src={item}></Image>)}</div>
+            <a href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
             var infowindow = new window.google.maps.InfoWindow({
               content: contentString,
             });

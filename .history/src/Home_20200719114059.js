@@ -19,11 +19,16 @@ import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import MyMap from "./components/Map/MyMap";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.scrollIntoView);
+
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
   const searchParams = useSelector((state) => state.searchParams);
   const [isFiltering, setIsFiltering] = useState(false);
   const dispatch = useDispatch();
+
+  const myRef = useRef(null);
+  const executeScroll = () => scrollToRef(myRef);
 
   // state = {
   //   desc: "<h1>sdcsDC</h1>",
@@ -88,7 +93,7 @@ export default function Home() {
     <div className="page">
       <div>
         <MyMap />
-        <Image width="100" height="100" style={{ cursor: "pointer", position: "absolute", zIndex: "10", top: "90%", left: "50%" }} src="https://media.giphy.com/media/Wtg8Bmgul1Qxc0otod/giphy.gif" alt="" />
+        <Image onClick={executeScroll} width="100" height="100" style={{ cursor: "pointer", position: "absolute", zIndex: "10", top: "90%", left: "50%" }} src="https://media.giphy.com/media/Wtg8Bmgul1Qxc0otod/giphy.gif" alt="" />
       </div>
 
       <Header />
@@ -96,7 +101,7 @@ export default function Home() {
       {/* <div>{parse(`${desc}`)}</div> */}
       {/* <MyMap></MyMap> */}
 
-      <Row className="mx-5">
+      <Row className="mx-5" ref={myRef}>
         <Col sm={3} className="mt-4">
           <div className="mb-3" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div onClick={() => filterByRating(5)} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
