@@ -11,7 +11,6 @@ import MyMap from "./components/Map/MyMap";
 import RestaurantDetail from "./RestaurantDetail";
 import LoginModal from "./components/LoginModal/LoginModal";
 import SignupModal from "./components/SignupModal/SignupModal";
-import Profile from "./views/Profile/Profile";
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +45,6 @@ class App extends Component {
           {/* <Route exact path="/my-map" component={MyMap} /> */}
           <Route exact path="/restaurant/:res" component={RestaurantDetail} />
           <Route exact path="/" component={Root} />
-          <Route exact path="/myProfile" component={Profile} />
         </Switch>
         {/* </div>
           </CSSTransition>

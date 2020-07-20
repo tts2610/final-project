@@ -39,7 +39,7 @@ export default function Header() {
           {user ? (
             <div>
               <NavDropdown title={user.email} id="basic-nav-dropdown">
-                <NavDropdown.Item href="/myProfile">User Info</NavDropdown.Item>
+                <NavDropdown.Item href="/userInfo">User Info</NavDropdown.Item>
 
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#" onClick={() => signOutUser()}>

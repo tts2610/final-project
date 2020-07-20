@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import { withRouter, Switch, Route, Link } from "react-router-dom";
-import FourOhFourPage from "./FourOFour";
+import FourOhFourPage from "../../FourOFour";
 import Home from "./Home";
-import Root from "./Root";
+import Root from "../../Root";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Footer from "./components/Footer/Footer";
-import MyMap from "./components/Map/MyMap";
-import RestaurantDetail from "./RestaurantDetail";
-import LoginModal from "./components/LoginModal/LoginModal";
-import SignupModal from "./components/SignupModal/SignupModal";
-import Profile from "./views/Profile/Profile";
+import Footer from "../../components/Footer/Footer";
+import MyMap from "../../components/Map/MyMap";
+import RestaurantDetail from "../../RestaurantDetail";
+import LoginModal from "../../components/LoginModal/LoginModal";
+import SignupModal from "../../components/SignupModal/SignupModal";
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +45,6 @@ class App extends Component {
           {/* <Route exact path="/my-map" component={MyMap} /> */}
           <Route exact path="/restaurant/:res" component={RestaurantDetail} />
           <Route exact path="/" component={Root} />
-          <Route exact path="/myProfile" component={Profile} />
         </Switch>
         {/* </div>
           </CSSTransition>
