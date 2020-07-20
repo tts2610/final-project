@@ -12,7 +12,7 @@ const initialState = {
   showLogin: false,
   showSignup: false,
   isUserLoaded: false,
-  searchParams: { tags: [], page: 1, perPage: undefined, totalPage: 0 },
+  searchParams: { tags: [], page: 1, perPage: 8, totalPage: 0 },
 };
 
 function reducer(state = initialState, action) {

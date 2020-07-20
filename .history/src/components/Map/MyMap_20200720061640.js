@@ -56,10 +56,10 @@ export default function MyMap() {
         email: user.email,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        rating: Math.floor(Math.random() * 6) + 1,
+        rating: Math.floor(Math.random() * 6),
       };
-      // https://foody-clone.herokuapp.com
-      const res = await axios.post("http://localhost:5000/review/", review);
+
+      const res = await axios.post("https://foody-clone.herokuapp.com/review/", review);
     }
   };
 
@@ -115,15 +115,13 @@ export default function MyMap() {
           data[i]["nRating"] = 1;
 
           const res = await uploadRestaurants(data[i]);
-          if (!res) {
-            continue;
-          }
+
           let { restaurant } = res;
 
-          // console.log(restaurant);
+          console.log(restaurant);
 
-          // const res_review = await getReview(restaurant._id);
-          // console.log(res_review);
+          const res_review = await getReview(restaurant._id);
+          console.log(res_review);
 
           // console.log(place);
           var image = {

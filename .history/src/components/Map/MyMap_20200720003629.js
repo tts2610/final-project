@@ -19,62 +19,30 @@ export default function MyMap() {
 
   const getMenu = async (id) => {
     let menu = await getMenuByRestaurantID(id);
-
-    if (menu.length === 0) {
+    if (!menu) {
       menu = [];
-      const shuffled = menu_data.sort(() => 0.5 - Math.random());
-      let selected = shuffled.slice(0, 8);
-      await selected.forEach(async (element) => {
+      await menu_data.forEach(async (element) => {
         element["restaurant_id"] = id;
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/menu/`, element);
         menu.push(element);
-        console.log(res);
+        // console.log(res);
       });
     }
     let arr = [];
     for (let index = 0; index < 4; index++) {
       const element = menu[index];
-      // console.log(element);
-      if (element)
-        // const item = `<Image width="50" height="50" src=${element.image}></Image>`;
-        arr.push(element.image);
+      // const item = `<Image width="50" height="50" src=${element.image}></Image>`;
+      arr.push(element.image);
     }
-    // console.log(arr);
+    console.log(arr);
     return arr;
   };
 
-  const getReview = async (id) => {
-    let list = await axios.get("https://foody-clone.herokuapp.com/users/");
-    let { userList } = list.data.data;
-    userList = userList.filter((item) => item.role != "owner");
-    const shuffled = userList.sort(() => 0.5 - Math.random());
-    let selected = shuffled.slice(0, 5);
-    for (let index = 0; index < selected.length; index++) {
-      let user = selected[index];
-      let review = {
-        restaurant_id: id,
-        email: user.email,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        rating: Math.floor(Math.random() * 6) + 1,
-      };
-      // https://foody-clone.herokuapp.com
-      const res = await axios.post("http://localhost:5000/review/", review);
-    }
-  };
-
   const initMap = () => {
-    const lat = localStorage.getItem("currentLat");
-    const lng = localStorage.getItem("currentLng");
-    if (lat && lng) {
-      setLat(parseFloat(lat));
-      setLong(parseFloat(lng));
-      return;
-    } else
-      navigator.geolocation.getCurrentPosition((post) => {
-        setLat(post.coords.latitude);
-        setLong(post.coords.longitude);
-      });
+    navigator.geolocation.getCurrentPosition((post) => {
+      setLat(post.coords.latitude);
+      setLong(post.coords.longitude);
+    });
   };
 
   const generateData = () => {
@@ -82,7 +50,6 @@ export default function MyMap() {
     var directionsRenderer = new window.google.maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true });
     setIsLoading(false);
     let coord = { lat: lat, lng: long };
-    console.log(coord);
     map = new window.google.maps.Map(document.getElementById("map"), {
       mapId: "9d284c56bab155df",
       center: coord,
@@ -115,16 +82,8 @@ export default function MyMap() {
           data[i]["nRating"] = 1;
 
           const res = await uploadRestaurants(data[i]);
-          if (!res) {
-            continue;
-          }
+          console.log(res);
           let { restaurant } = res;
-
-          // console.log(restaurant);
-
-          // const res_review = await getReview(restaurant._id);
-          // console.log(res_review);
-
           // console.log(place);
           var image = {
             url: "/images/restaurant_icon.png",
@@ -134,7 +93,7 @@ export default function MyMap() {
             scaledSize: new window.google.maps.Size(35, 35),
           };
           let list = await getMenu(restaurant._id);
-          console.log(list);
+          // console.log(list)
           // eslint-disable-next-line no-loop-func
           window.setTimeout(function () {
             var contentString = `<h1>${restaurant.name}</h1>
@@ -218,7 +177,10 @@ export default function MyMap() {
 
   useEffect(() => {
     setIsLoading(true);
-
+    // axios.get(`http://localhost:5000/restaurants`).then((res) => {
+    //   const persons = res.data;
+    //   this.setState({ test: persons });
+    // });
     renderMap();
   }, []);
 

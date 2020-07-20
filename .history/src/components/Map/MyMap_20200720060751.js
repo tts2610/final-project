@@ -23,7 +23,7 @@ export default function MyMap() {
     if (menu.length === 0) {
       menu = [];
       const shuffled = menu_data.sort(() => 0.5 - Math.random());
-      let selected = shuffled.slice(0, 8);
+      let selected = shuffled.slice(0, 15);
       await selected.forEach(async (element) => {
         element["restaurant_id"] = id;
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/menu/`, element);
@@ -56,10 +56,10 @@ export default function MyMap() {
         email: user.email,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        rating: Math.floor(Math.random() * 6) + 1,
+        rating: Math.floor(Math.random() * 6),
       };
-      // https://foody-clone.herokuapp.com
-      const res = await axios.post("http://localhost:5000/review/", review);
+
+      const res = await axios.post("https://foody-clone.herokuapp.com/review/", review);
     }
   };
 
@@ -67,8 +67,8 @@ export default function MyMap() {
     const lat = localStorage.getItem("currentLat");
     const lng = localStorage.getItem("currentLng");
     if (lat && lng) {
-      setLat(parseFloat(lat));
-      setLong(parseFloat(lng));
+      setLat(lat.toString());
+      setLong(lng.toString());
       return;
     } else
       navigator.geolocation.getCurrentPosition((post) => {
@@ -115,15 +115,11 @@ export default function MyMap() {
           data[i]["nRating"] = 1;
 
           const res = await uploadRestaurants(data[i]);
-          if (!res) {
-            continue;
-          }
+
           let { restaurant } = res;
 
-          // console.log(restaurant);
-
-          // const res_review = await getReview(restaurant._id);
-          // console.log(res_review);
+          const res_review = await getReview(restaurant._id);
+          console.log(res_review);
 
           // console.log(place);
           var image = {
@@ -134,15 +130,15 @@ export default function MyMap() {
             scaledSize: new window.google.maps.Size(35, 35),
           };
           let list = await getMenu(restaurant._id);
-          console.log(list);
+          // console.log(list)
           // eslint-disable-next-line no-loop-func
           window.setTimeout(function () {
-            var contentString = `<h1>${restaurant.name}</h1>
-            <div>${list && list.map((item) => `<Image width="80" height="80" src=${item}></Image>`)}</div>
-            <a className="mt-3" href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
-            var infowindow = new window.google.maps.InfoWindow({
-              content: contentString,
-            });
+            // var contentString = `<h1>${restaurant.name}</h1>
+            // <div>${list && list.map((item) => `<Image width="80" height="80" src=${item}></Image>`)}</div>
+            // <a className="mt-3" href="/restaurant/${restaurant.name}+${restaurant._id}">More info</a>`;
+            // var infowindow = new window.google.maps.InfoWindow({
+            //   content: contentString,
+            // });
             var marker = new window.google.maps.Marker({
               map: map,
               icon: image,
@@ -151,7 +147,7 @@ export default function MyMap() {
               animation: window.google.maps.Animation.DROP,
             });
             marker.addListener("click", function () {
-              infowindow.open(map, marker);
+              // infowindow.open(map, marker);
               calcRoute(new window.google.maps.LatLng(lat, long), new window.google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng()), directionsService, directionsRenderer);
             });
           }, i * 200);

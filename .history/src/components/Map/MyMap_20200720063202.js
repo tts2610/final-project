@@ -115,15 +115,13 @@ export default function MyMap() {
           data[i]["nRating"] = 1;
 
           const res = await uploadRestaurants(data[i]);
-          if (!res) {
-            continue;
-          }
+
           let { restaurant } = res;
 
-          // console.log(restaurant);
+          console.log(restaurant);
 
-          // const res_review = await getReview(restaurant._id);
-          // console.log(res_review);
+          const res_review = await getReview(restaurant._id);
+          console.log(res_review);
 
           // console.log(place);
           var image = {

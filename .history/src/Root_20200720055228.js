@@ -42,13 +42,16 @@ function Search() {
 
   const handleSelect = async (value) => {
     setValue(value, false);
-    localStorage.setItem("location", value);
     const parameter = {
       address: value,
     };
     getGeocode(parameter)
       .then((results) => getLatLng(results[0]))
-      .then((latLng) => setCoordinates(latLng));
+      .then((latLng) => setCoordinates(latLng))
+      .then((res) => {
+        localStorage.setItem("currentLat", coordinates.lat);
+        localStorage.setItem("currentLng", coordinates.lng);
+      });
   };
 
   const handleChange = (e) => {
@@ -56,8 +59,7 @@ function Search() {
   };
   const onClickFind = async (value) => {
     setIsLoading(true);
-    localStorage.setItem("currentLat", coordinates.lat);
-    localStorage.setItem("currentLng", coordinates.lng);
+
     // send to store(redux)
     setTimeout(() => {
       setCoordinates({ lat: null, lng: null });

@@ -32,7 +32,7 @@ export default function Home() {
 
   const performFilter = (params) => {
     // ${process.env.REACT_APP_API_URL}
-    let searchUrl = `${process.env.REACT_APP_API_URL}/restaurants/search?tags=${params.tags}&averageRatingMin=${params.averageRating ? params.averageRating : ""}&page=${params.page}&&perPage=`;
+    let searchUrl = `${process.env.REACT_APP_API_URL}/restaurants/search?tags=${params.tags}&averageRatingMin=${params.averageRating ? params.averageRating : ""}&page=${params.page}&&perPage=6`;
     console.log(searchUrl);
     axios.get(searchUrl).then(function (res) {
       // setTotalPage(res.data.data.pagination.totalPages);
@@ -55,8 +55,8 @@ export default function Home() {
 
       if (!localStorage.getItem("currentLat") && !localStorage.getItem("currentLng")) {
         navigator.geolocation.getCurrentPosition(function (position) {
-          localStorage.setItem("currentLat", position.coords.latitude);
-          localStorage.setItem("currentLng", position.coords.longitude);
+          localStorage.setItem("lat", position.coords.latitude);
+          localStorage.setItem("lon", position.coords.longitude);
         });
       }
     }
@@ -92,8 +92,6 @@ export default function Home() {
       </div>
 
       <Header />
-
-      <h3>Restaurant near {localStorage.getItem("location")}</h3>
 
       {/* <div>{parse(`${desc}`)}</div> */}
       {/* <MyMap></MyMap> */}

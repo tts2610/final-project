@@ -93,8 +93,6 @@ export default function Home() {
 
       <Header />
 
-      <h3>Restaurant near {localStorage.getItem("location")}</h3>
-
       {/* <div>{parse(`${desc}`)}</div> */}
       {/* <MyMap></MyMap> */}
 

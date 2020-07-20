@@ -20,12 +20,12 @@ export default function FoodCard({ item }) {
   };
 
   useEffect(() => {
-    // async function getItemDistance() {
-    //   let distance = await getDistance({ lat1: localStorage.getItem("currentLat"), lon1: localStorage.getItem("currentLat"), lat2: item.latitude, lon2: item.longitude });
-    //   // distance = distance * 1000;
-    //   setDistance(Math.floor(distance));
-    // }
-    // getItemDistance();
+    async function getItemDistance() {
+      let distance = await getDistance({ lat1: localStorage.getItem("lat"), lon1: localStorage.getItem("lon"), lat2: item.latitude, lon2: item.longitude });
+      distance = distance * 1000;
+      setDistance(Math.floor(distance));
+    }
+    getItemDistance();
   }, []);
 
   return (
@@ -34,9 +34,11 @@ export default function FoodCard({ item }) {
         <Card.Img id="card-img-top" variant="top" width="300" height="210" src={item.image} />
         <Card.ImgOverlay className="text-white img-overlay">
           <Row>
-            <Col>{/* <Badge className="py-2 px-2" variant="danger">
+            <Col>
+              <Badge className="py-2 px-2" variant="danger">
                 {distance} m
-              </Badge> */}</Col>
+              </Badge>
+            </Col>
             <Col></Col>
           </Row>
           <Row className="row-overlay">

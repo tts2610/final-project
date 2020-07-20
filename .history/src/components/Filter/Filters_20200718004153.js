@@ -63,7 +63,7 @@ export default function Filters() {
           getTagList(tempData);
         });
     if (selectedOption.length === 0 && selectedTags.length === 0) {
-      dispatch({ type: "FILTER", payload: { searchParams: { tags: [], page: 1, perPage: undefined, totalPage: 0 }, isFiltering: false } });
+      dispatch({ type: "FILTER", payload: { searchParams: { tags: [], page: 1, perPage: 8, totalPage: 0 }, isFiltering: false } });
     }
   }, [selectedOption, selectedTags, dispatch]);
 
@@ -101,7 +101,7 @@ export default function Filters() {
   const handleReset = () => {
     setSelected([]);
     setSelectedTags([]);
-    dispatch({ type: "FILTER", payload: { searchParams: { tags: [], page: 1, averageRating: undefined, perPage: undefined, totalPage: 0 }, isFiltering: false } });
+    dispatch({ type: "FILTER", payload: { searchParams: { tags: [], page: 1, averageRating: undefined, perPage: 8, totalPage: 0 }, isFiltering: false } });
   };
 
   return (

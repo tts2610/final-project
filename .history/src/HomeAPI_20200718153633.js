@@ -16,7 +16,7 @@ export const insertMenu = async () => {
 export const insertUser = async () => {
   data.forEach(async (element) => {
     // ${process.env.REACT_APP_API_URL}
-    const res = await axios.post(`https://foody-clone.herokuapp.com/users/register`, element);
+    const res = await axios.post(`http://localhost:5000/users/register`, element);
     // console.log(res);
   });
 };

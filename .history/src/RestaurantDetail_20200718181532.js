@@ -25,7 +25,7 @@ export default function RestaurantDetail() {
       const { restaurant } = data;
       setrestaurant(restaurant);
 
-      let distance = await getDistance({ lat1: localStorage.getItem("currentLat"), lon1: localStorage.getItem("currentLng"), lat2: restaurant.latitude, lon2: restaurant.longitude });
+      let distance = await getDistance({ lat1: localStorage.getItem("lat"), lon1: localStorage.getItem("lon"), lat2: restaurant.latitude, lon2: restaurant.longitude });
       setDistance(Math.ceil(distance));
 
       const categories = await getDistinctCategory(resID);

@@ -42,7 +42,6 @@ function Search() {
 
   const handleSelect = async (value) => {
     setValue(value, false);
-    localStorage.setItem("location", value);
     const parameter = {
       address: value,
     };
