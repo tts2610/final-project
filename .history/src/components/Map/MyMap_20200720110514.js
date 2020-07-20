@@ -70,13 +70,11 @@ export default function MyMap() {
       setLat(parseFloat(lat));
       setLong(parseFloat(lng));
       return;
-    } else {
+    } else
       navigator.geolocation.getCurrentPosition((post) => {
         setLat(post.coords.latitude);
         setLong(post.coords.longitude);
       });
-      console.log("navigator");
-    }
   };
 
   const generateData = () => {

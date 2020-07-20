@@ -59,7 +59,7 @@ export default function MyMap() {
         rating: Math.floor(Math.random() * 6) + 1,
       };
       // https://foody-clone.herokuapp.com
-      const res = await axios.post("https://foody-clone.herokuapp.com/review/", review);
+      const res = await axios.post("http://localhost:5000/review/", review);
     }
   };
 
@@ -70,13 +70,11 @@ export default function MyMap() {
       setLat(parseFloat(lat));
       setLong(parseFloat(lng));
       return;
-    } else {
+    } else
       navigator.geolocation.getCurrentPosition((post) => {
         setLat(post.coords.latitude);
         setLong(post.coords.longitude);
       });
-      console.log("navigator");
-    }
   };
 
   const generateData = () => {
@@ -111,6 +109,7 @@ export default function MyMap() {
           let place = results[i];
           data[i]["latitude"] = place.geometry.location.lat().toString();
           data[i]["longitude"] = place.geometry.location.lng().toString();
+          // data[i]["distance"] = distance(lat, long, place.geometry.location.lat(), place.geometry.location.lng());
           data[i]["address"] = place.vicinity;
           data[i]["averageRating"] = place.rating;
           data[i]["nRating"] = 1;
@@ -123,7 +122,7 @@ export default function MyMap() {
 
           // console.log(restaurant);
 
-          // const res_review = await getReview(restaurant._id);
+          const res_review = await getReview(restaurant._id);
           // console.log(res_review);
 
           // console.log(place);
