@@ -33,11 +33,17 @@ import { fetchUser } from "./components/Header/HeaderAPI";
 // };
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
+  let user;
+  getUser();
+  const getUser = async () => {
+    user = await fetchUser();
+  };
+
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (localStorage.getItem("token")) {
+        if (user) {
           return <Component {...rest} {...props} />;
         } else {
           return <Redirect to="/404" />;

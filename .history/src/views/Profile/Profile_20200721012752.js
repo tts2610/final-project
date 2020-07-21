@@ -8,7 +8,6 @@ import { updateUser } from "./ProfileAPI";
 import StripeCheckout from "react-stripe-checkout";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AddNewRestaurant from "../../components/AddNewRestaurant/AddNewRestaurant";
 export default function Profile() {
   const [user, setUser] = useState();
   const [images, setImages] = useState("");
@@ -38,7 +37,6 @@ export default function Profile() {
       const user = await updateUser(localStorage.getItem("token"), formData);
       setUser(user);
       if (user.verified) {
-        console.log("scascc");
         toast("Success! Star by posting your first restaurant!", { type: "success" });
       } else {
         toast("Something went wrong", { type: "error" });
@@ -111,26 +109,14 @@ export default function Profile() {
               </ul>
             </div>
           </div>
-          {user.role !== "owner" && (
-            <div class="panel">
-              <div class="panel-heading">
-                <h3 class="panel-title">Upgrade to restaurant's owner!</h3>
-              </div>
-              <div class="panel-content panel-activity">
-                <StripeCheckout stripeKey="pk_test_51H71vcC8ES7aOI0iJD8mbtmMJPpWKUR7HoqSjkLbSnd4CHskWbjYQACmUtCwfzsYn89vQZu9OoG7g38Me3yPW5uL00ZPuuCbyh" token={handleToken} name="Become an owner!" billingAddress />
-              </div>
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Upgrade to restaurant's owner!</h3>
             </div>
-          )}
-          {user.role === "owner" && (
-            <div class="panel">
-              <div class="panel-heading">
-                <h3 class="panel-title">Host new restaurant!</h3>
-              </div>
-              <div class="panel-content panel-activity">
-                <AddNewRestaurant />
-              </div>
+            <div class="panel-content panel-activity">
+              <StripeCheckout stripeKey="pk_test_51H71vcC8ES7aOI0iJD8mbtmMJPpWKUR7HoqSjkLbSnd4CHskWbjYQACmUtCwfzsYn89vQZu9OoG7g38Me3yPW5uL00ZPuuCbyh" token={handleToken} name="Become an owner!" billingAddress />
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

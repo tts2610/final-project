@@ -5,10 +5,6 @@ import { fetchUser } from "../../components/Header/HeaderAPI";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { updateUser } from "./ProfileAPI";
-import StripeCheckout from "react-stripe-checkout";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import AddNewRestaurant from "../../components/AddNewRestaurant/AddNewRestaurant";
 export default function Profile() {
   const [user, setUser] = useState();
   const [images, setImages] = useState("");
@@ -30,22 +26,6 @@ export default function Profile() {
       setUser(user);
     }
   };
-  async function handleToken(token, addresses) {
-    if (user) {
-      var formData = new FormData();
-      formData.append("verified", true);
-      formData.append("role", "owner");
-      const user = await updateUser(localStorage.getItem("token"), formData);
-      setUser(user);
-      if (user.verified) {
-        console.log("scascc");
-        toast("Success! Star by posting your first restaurant!", { type: "success" });
-      } else {
-        toast("Something went wrong", { type: "error" });
-      }
-    }
-  }
-
   if (!user) return <></>;
   return (
     <div>
@@ -111,26 +91,42 @@ export default function Profile() {
               </ul>
             </div>
           </div>
-          {user.role !== "owner" && (
-            <div class="panel">
-              <div class="panel-heading">
-                <h3 class="panel-title">Upgrade to restaurant's owner!</h3>
-              </div>
-              <div class="panel-content panel-activity">
-                <StripeCheckout stripeKey="pk_test_51H71vcC8ES7aOI0iJD8mbtmMJPpWKUR7HoqSjkLbSnd4CHskWbjYQACmUtCwfzsYn89vQZu9OoG7g38Me3yPW5uL00ZPuuCbyh" token={handleToken} name="Become an owner!" billingAddress />
-              </div>
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Upgrade to restaurant's owner!</h3>
             </div>
-          )}
-          {user.role === "owner" && (
-            <div class="panel">
-              <div class="panel-heading">
-                <h3 class="panel-title">Host new restaurant!</h3>
-              </div>
-              <div class="panel-content panel-activity">
-                <AddNewRestaurant />
-              </div>
+            <div class="panel-content panel-activity">
+              <ul class="panel-activity__list">
+                <li>
+                  <i class="activity__list__icon fa fa-question-circle-o"></i>
+                  <div class="activity__list__header">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" />
+                    <a href="#">John Doe</a> Posted the question: <a href="#">How can I change my annual reports for the better effect?</a>
+                  </div>
+                  <div class="activity__list__body entry-content">
+                    <p>
+                      <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Voluptatibus ab a nostrum repudiandae dolorem ut quaerat veniam asperiores, rerum voluptatem magni dolores corporis!
+                      <em>Molestiae commodi nesciunt a, repudiandae repellendus ea.</em>
+                    </p>
+                  </div>
+                  <div class="activity__list__footer">
+                    <a href="#">
+                      {" "}
+                      <i class="fa fa-thumbs-up"></i>123
+                    </a>
+                    <a href="#">
+                      {" "}
+                      <i class="fa fa-comments"></i>23
+                    </a>
+                    <span>
+                      {" "}
+                      <i class="fa fa-clock"></i>2 hours ago
+                    </span>
+                  </div>
+                </li>
+              </ul>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

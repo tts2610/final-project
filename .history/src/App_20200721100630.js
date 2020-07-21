@@ -14,30 +14,14 @@ import SignupModal from "./components/SignupModal/SignupModal";
 import Profile from "./views/Profile/Profile";
 import { fetchUser } from "./components/Header/HeaderAPI";
 
-// const ProtectedRoute = async ({ component: Component, ...rest }) => {
-//   const user = await fetchUser();
-//   const isOwner = user.role === "owner";
-//   return (
-//     <Route
-//       {...rest}
-//       render={(props) => {
-//         console.log("bbbb");
-//         if (isOwner || user) {
-//           return <Component {...rest} {...props} />;
-//         } else {
-//           return <Redirect to="/404" />;
-//         }
-//       }}
-//     />
-//   );
-// };
-
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = async ({ component: Component, ...rest }) => {
+  const user = await fetchUser();
+  const isOwner = user.role === "owner";
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (localStorage.getItem("token")) {
+        if (isOwner || user) {
           return <Component {...rest} {...props} />;
         } else {
           return <Redirect to="/404" />;

@@ -37,7 +37,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (localStorage.getItem("token")) {
+        if (localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_USER_HOST)) {
           return <Component {...rest} {...props} />;
         } else {
           return <Redirect to="/404" />;
