@@ -87,54 +87,68 @@ export default function AddNewRestaurant() {
       }
     }
 
-    if (!restaurantName || !restaurantAddress || !phoneNumber || !introduction || selectedTags.length === 0 || !restaurantLatitude || !restaurantLongitude || filterList.length === 0 || !restaurantImage) {
-      toast.error("Please input required fields");
-      return;
-    }
-
-    var formData = new FormData();
-    // for (const key of Object.keys(images)) {
-    //   formData.append("images", images[key]);
+    // if (!restaurantName || !restaurantAddress || !phoneNumber || !introduction || selectedTags.length === 0 || !restaurantLatitude || !restaurantLongitude || filterList.length === 0 || !restaurantImage) {
+    //   toast.error("Please input required fields");
+    //   return;
     // }
-    formData.append("name", restaurantName);
-    formData.append("address", restaurantAddress);
-    formData.append("phoneNumber", phoneNumber);
-    selectedTags.forEach((element) => {
-      formData.append("tags", element);
+
+    // var formData = new FormData();
+    // // for (const key of Object.keys(images)) {
+    // //   formData.append("images", images[key]);
+    // // }
+    // formData.append("name", restaurantName);
+    // formData.append("address", restaurantAddress);
+    // formData.append("phoneNumber", phoneNumber);
+    // selectedTags.forEach((element) => {
+    //   formData.append("tags", element);
+    // });
+    // console.log(Object.keys(restaurantImage));
+    // for (const key of Object.keys(restaurantImage)) {
+    //   formData.append("image", restaurantImage[key]);
+    // }
+    // formData.append("introduction", introduction);
+    // formData.append("latitude", restaurantLatitude);
+    // formData.append("longitude", restaurantLongitude);
+
+    // formData.append("owner_id", user._id);
+
+    filterList.forEach((element) => {
+      var formDataMenu = new FormData();
+      formDataMenu.append("title", element.title);
+      formDataMenu.append("category", element.category);
+      formDataMenu.append("restaurant_id", "5f172c552a6e35af6bc62982");
+      console.log(Object.keys(element.image));
+      formDataMenu.append("image", element.image[0]);
+      axios
+        .post("http://localhost:5000/menu/", formDataMenu)
+        .then((res) => console.log(res))
+        .catch((err) => alert("Opps! Unauthorized"));
     });
-    console.log(Object.keys(restaurantImage));
-    for (const key of Object.keys(restaurantImage)) {
-      formData.append("image", restaurantImage[key]);
-    }
-    formData.append("introduction", introduction);
-    formData.append("latitude", restaurantLatitude);
-    formData.append("longitude", restaurantLongitude);
 
-    formData.append("owner_id", user._id);
+    // axios
+    //   .post("http://localhost:5000/restaurants/", formData)
+    //   .then((res) => {
+    //     const { status } = res;
+    //     if (status === 200) {
+    //       const { restaurant } = res.data.data;
 
-    axios
-      .post("http://localhost:5000/restaurants/", formData)
-      .then((res) => {
-        const { status } = res;
-        if (status === 200) {
-          const { restaurant } = res.data.data;
+    //       filterList.forEach((element) => {
+    //         var formDataMenu = new FormData();
+    //         formDataMenu.append("title", element.title);
+    //         formDataMenu.append("category", element.category);
+    //         formDataMenu.append("restaurant_id", "5f172c552a6e35af6bc62982");
+    //         console.log(Object.keys(element.image));
+    //         formDataMenu.append("image", element.image[0]);
+    //         axios
+    //           .post("http://localhost:5000/menu/", formDataMenu)
+    //           .then((res) => console.log(res))
+    //           .catch((err) => alert("Opps! Unauthorized"));
+    //       });
+    //     }
 
-          filterList.forEach((element) => {
-            var formDataMenu = new FormData();
-            formDataMenu.append("title", element.title);
-            formDataMenu.append("category", element.category);
-            formDataMenu.append("restaurant_id", restaurant._id);
-            formDataMenu.append("image", element.image);
-            axios
-              .post("http://localhost:5000/menu/", formDataMenu)
-              .then((res) => console.log(res))
-              .catch((err) => alert("Opps! Unauthorized"));
-          });
-        }
-
-        alert("added new exp successfully");
-      })
-      .catch((err) => alert("Opps! Unauthorized"));
+    //     alert("added new exp successfully");
+    //   })
+    //   .catch((err) => alert("Opps! Unauthorized"));
   };
 
   // handle click event of the Add button

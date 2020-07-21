@@ -14,32 +14,21 @@ import CheckboxGroup from "react-checkbox-group";
 import { useEffect } from "react";
 import { getTags } from "./AddNewRestaurantAPI";
 import { ToastContainer, toast } from "react-toastify";
-import { fetchUser } from "../Header/HeaderAPI";
-import axios from "axios";
 
 export default function AddNewRestaurant() {
   const [tags, setTags] = useState([]);
-  const [user, setUser] = useState();
-  const [inputList, setInputList] = useState([
-    { title: "", category: "", image: "" },
-    { title: "", category: "", image: "" },
-    { title: "", category: "", image: "" },
-  ]);
 
-  useEffect(() => {
-    async function getUser() {
-      const user = await fetchUser();
-      if (user) setUser(user.data);
-    }
-    if (localStorage.getItem("token")) getUser();
-  }, []);
+  const [inputList, setInputList] = useState([
+    { title: "", image: "" },
+    { title: "", image: "" },
+    { title: "", image: "" },
+  ]);
 
   const [restaurantName, setRestaurantName] = useState("");
   const [restaurantAddress, setRestaurantAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [introduction, setIntroduction] = useState("");
   const [selectedTags, setselectedTags] = useState([]);
-  const [restaurantImage, setRestaurantImage] = useState("");
 
   const [restaurantLatitude, setRestaurantLatitude] = useState("");
   const [restaurantLongitude, setRestaurantLongitude] = useState("");
@@ -49,11 +38,6 @@ export default function AddNewRestaurant() {
     const { lat, lng } = latLng;
     setRestaurantLatitude(lat);
     setRestaurantLongitude(lng);
-  };
-
-  const setAddress = (address) => {
-    console.log(address);
-    setRestaurantAddress(address);
   };
 
   const handleInputChange = (e, index) => {
@@ -86,55 +70,10 @@ export default function AddNewRestaurant() {
         filterList.push(inputList[index]);
       }
     }
-
-    if (!restaurantName || !restaurantAddress || !phoneNumber || !introduction || selectedTags.length === 0 || !restaurantLatitude || !restaurantLongitude || filterList.length === 0 || !restaurantImage) {
+    console.log(filterList);
+    if (!restaurantName || !restaurantAddress || !phoneNumber || !introduction || selectedTags.length === 0 || !restaurantLatitude || !restaurantLongitude || filterList.length === 0) {
       toast.error("Please input required fields");
-      return;
     }
-
-    var formData = new FormData();
-    // for (const key of Object.keys(images)) {
-    //   formData.append("images", images[key]);
-    // }
-    formData.append("name", restaurantName);
-    formData.append("address", restaurantAddress);
-    formData.append("phoneNumber", phoneNumber);
-    selectedTags.forEach((element) => {
-      formData.append("tags", element);
-    });
-    console.log(Object.keys(restaurantImage));
-    for (const key of Object.keys(restaurantImage)) {
-      formData.append("image", restaurantImage[key]);
-    }
-    formData.append("introduction", introduction);
-    formData.append("latitude", restaurantLatitude);
-    formData.append("longitude", restaurantLongitude);
-
-    formData.append("owner_id", user._id);
-
-    axios
-      .post("http://localhost:5000/restaurants/", formData)
-      .then((res) => {
-        const { status } = res;
-        if (status === 200) {
-          const { restaurant } = res.data.data;
-
-          filterList.forEach((element) => {
-            var formDataMenu = new FormData();
-            formDataMenu.append("title", element.title);
-            formDataMenu.append("category", element.category);
-            formDataMenu.append("restaurant_id", restaurant._id);
-            formDataMenu.append("image", element.image);
-            axios
-              .post("http://localhost:5000/menu/", formDataMenu)
-              .then((res) => console.log(res))
-              .catch((err) => alert("Opps! Unauthorized"));
-          });
-        }
-
-        alert("added new exp successfully");
-      })
-      .catch((err) => alert("Opps! Unauthorized"));
   };
 
   // handle click event of the Add button
@@ -175,7 +114,7 @@ export default function AddNewRestaurant() {
               <Form.Control value={restaurantName} onChange={(e) => setRestaurantName(e.target.value)} type="text" placeholder="Restaurant name" />
             </Form.Group>
 
-            <Search setCoordinates={setCoordinates} setAddress={setAddress} />
+            <Search setCoordinates={setCoordinates} />
 
             <Form.Group controlId="formBasicPassword">
               <Form.Control value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="number" placeholder="Phone number" />
@@ -202,7 +141,7 @@ export default function AddNewRestaurant() {
             </div>
 
             <Form.Group>
-              <Form.File onChange={(e) => setRestaurantImage(e.target.files)} label="" />
+              <Form.File id="exampleFormControlFile1" label="" />
             </Form.Group>
             <Button variant="primary" onClick={handleClick}>
               Click to add menus
@@ -214,7 +153,6 @@ export default function AddNewRestaurant() {
             return (
               <div className="box">
                 <input name="title" placeholder="Enter Food Title" value={x.title} onChange={(e) => handleInputChange(e, i)} />
-                <input name="category" placeholder="Enter Food Category" value={x.category} onChange={(e) => handleInputChange(e, i)} />
                 <input type="file" className="ml-3" name="image" onChange={(e) => handleInputChange(e, i)} />
                 <div className="btn-box">
                   {inputList.length !== 1 && (
@@ -244,7 +182,7 @@ export default function AddNewRestaurant() {
   );
 }
 
-function Search({ setCoordinates, setAddress }) {
+function Search({ setCoordinates }) {
   const {
     ready,
     value,
@@ -254,7 +192,7 @@ function Search({ setCoordinates, setAddress }) {
 
   const handleSelect = async (value) => {
     setValue(value, false);
-    setAddress(value);
+    localStorage.setItem("location", value);
     const parameter = {
       address: value,
     };
@@ -265,7 +203,6 @@ function Search({ setCoordinates, setAddress }) {
 
   const handleChange = (e) => {
     setValue(e.target.value);
-    setAddress(e.target.value);
   };
   //   const onClickFind = async (value) => {
   //     setIsLoading(true);

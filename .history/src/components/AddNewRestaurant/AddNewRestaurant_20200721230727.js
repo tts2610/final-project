@@ -15,15 +15,14 @@ import { useEffect } from "react";
 import { getTags } from "./AddNewRestaurantAPI";
 import { ToastContainer, toast } from "react-toastify";
 import { fetchUser } from "../Header/HeaderAPI";
-import axios from "axios";
 
 export default function AddNewRestaurant() {
   const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
   const [inputList, setInputList] = useState([
-    { title: "", category: "", image: "" },
-    { title: "", category: "", image: "" },
-    { title: "", category: "", image: "" },
+    { title: "", image: "" },
+    { title: "", image: "" },
+    { title: "", image: "" },
   ]);
 
   useEffect(() => {
@@ -102,39 +101,17 @@ export default function AddNewRestaurant() {
     selectedTags.forEach((element) => {
       formData.append("tags", element);
     });
-    console.log(Object.keys(restaurantImage));
-    for (const key of Object.keys(restaurantImage)) {
-      formData.append("image", restaurantImage[key]);
-    }
     formData.append("introduction", introduction);
     formData.append("latitude", restaurantLatitude);
     formData.append("longitude", restaurantLongitude);
 
     formData.append("owner_id", user._id);
 
-    axios
-      .post("http://localhost:5000/restaurants/", formData)
-      .then((res) => {
-        const { status } = res;
-        if (status === 200) {
-          const { restaurant } = res.data.data;
+    console.log(user._id);
 
-          filterList.forEach((element) => {
-            var formDataMenu = new FormData();
-            formDataMenu.append("title", element.title);
-            formDataMenu.append("category", element.category);
-            formDataMenu.append("restaurant_id", restaurant._id);
-            formDataMenu.append("image", element.image);
-            axios
-              .post("http://localhost:5000/menu/", formDataMenu)
-              .then((res) => console.log(res))
-              .catch((err) => alert("Opps! Unauthorized"));
-          });
-        }
-
-        alert("added new exp successfully");
-      })
-      .catch((err) => alert("Opps! Unauthorized"));
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_USER_TOKEN)}`,
+    };
   };
 
   // handle click event of the Add button
@@ -214,7 +191,6 @@ export default function AddNewRestaurant() {
             return (
               <div className="box">
                 <input name="title" placeholder="Enter Food Title" value={x.title} onChange={(e) => handleInputChange(e, i)} />
-                <input name="category" placeholder="Enter Food Category" value={x.category} onChange={(e) => handleInputChange(e, i)} />
                 <input type="file" className="ml-3" name="image" onChange={(e) => handleInputChange(e, i)} />
                 <div className="btn-box">
                   {inputList.length !== 1 && (

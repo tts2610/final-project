@@ -21,9 +21,9 @@ export default function AddNewRestaurant() {
   const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
   const [inputList, setInputList] = useState([
-    { title: "", category: "", image: "" },
-    { title: "", category: "", image: "" },
-    { title: "", category: "", image: "" },
+    { title: "", image: "" },
+    { title: "", image: "" },
+    { title: "", image: "" },
   ]);
 
   useEffect(() => {
@@ -102,7 +102,6 @@ export default function AddNewRestaurant() {
     selectedTags.forEach((element) => {
       formData.append("tags", element);
     });
-    console.log(Object.keys(restaurantImage));
     for (const key of Object.keys(restaurantImage)) {
       formData.append("image", restaurantImage[key]);
     }
@@ -111,6 +110,8 @@ export default function AddNewRestaurant() {
     formData.append("longitude", restaurantLongitude);
 
     formData.append("owner_id", user._id);
+
+    console.log(user._id);
 
     axios
       .post("http://localhost:5000/restaurants/", formData)
@@ -122,9 +123,9 @@ export default function AddNewRestaurant() {
           filterList.forEach((element) => {
             var formDataMenu = new FormData();
             formDataMenu.append("title", element.title);
-            formDataMenu.append("category", element.category);
-            formDataMenu.append("restaurant_id", restaurant._id);
-            formDataMenu.append("image", element.image);
+            for (const key of Object.keys(element.image)) {
+              formData.append("image", element.image[key]);
+            }
             axios
               .post("http://localhost:5000/menu/", formDataMenu)
               .then((res) => console.log(res))
@@ -214,7 +215,6 @@ export default function AddNewRestaurant() {
             return (
               <div className="box">
                 <input name="title" placeholder="Enter Food Title" value={x.title} onChange={(e) => handleInputChange(e, i)} />
-                <input name="category" placeholder="Enter Food Category" value={x.category} onChange={(e) => handleInputChange(e, i)} />
                 <input type="file" className="ml-3" name="image" onChange={(e) => handleInputChange(e, i)} />
                 <div className="btn-box">
                   {inputList.length !== 1 && (

@@ -102,7 +102,6 @@ export default function AddNewRestaurant() {
     selectedTags.forEach((element) => {
       formData.append("tags", element);
     });
-    console.log(Object.keys(restaurantImage));
     for (const key of Object.keys(restaurantImage)) {
       formData.append("image", restaurantImage[key]);
     }
@@ -111,6 +110,8 @@ export default function AddNewRestaurant() {
     formData.append("longitude", restaurantLongitude);
 
     formData.append("owner_id", user._id);
+
+    console.log(user._id);
 
     axios
       .post("http://localhost:5000/restaurants/", formData)
@@ -124,7 +125,11 @@ export default function AddNewRestaurant() {
             formDataMenu.append("title", element.title);
             formDataMenu.append("category", element.category);
             formDataMenu.append("restaurant_id", restaurant._id);
-            formDataMenu.append("image", element.image);
+            console.log(element);
+            for (const key of Object.keys(element.image)) {
+              console.log(element.image);
+              formData.append("image", element.image[key]);
+            }
             axios
               .post("http://localhost:5000/menu/", formDataMenu)
               .then((res) => console.log(res))
