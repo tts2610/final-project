@@ -1,0 +1,32 @@
+header.masthead {
+    position: relative;
+    background-color: #343a40;
+    background: url(https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png) no-repeat center center;
+    background-size: cover;
+    padding-bottom: 8rem;
+    /* height: 50vh; */
+}
+
+header .header-body {
+    padding-top: 5rem;
+}
+
+header .header-top {
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: large;
+    font-weight: bolder !important;
+}
+
+.header-top div:hover {
+    cursor: pointer;
+}
+
+header .dropdown.nav-item a {
+    color: white !important;
+}
+
+header .dropdown.nav-item .dropdown-menu a {
+    color: black !important;
+}
