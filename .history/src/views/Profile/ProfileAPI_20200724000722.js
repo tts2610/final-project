@@ -28,10 +28,9 @@ export const getActivities = async (id) => {
   }
 };
 
-export const getRestaurantList = async (id, page) => {
+export const getRestaurantList = async (id) => {
   try {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/${id}?page=${page}&perPage=4`);
-    console.log(res.data.data);
+    const res = await axios.get(`http://localhost:5000/restaurants/${id}?page=1&perPage=4`);
     return res.data.data;
   } catch (error) {
     console.log("dont mess with my app");

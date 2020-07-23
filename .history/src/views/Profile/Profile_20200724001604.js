@@ -12,7 +12,6 @@ import AddNewRestaurant from "../../components/AddNewRestaurant/AddNewRestaurant
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
-import { Link } from "react-router-dom";
 
 export default function Profile() {
   const [user, setUser] = useState();
@@ -31,10 +30,8 @@ export default function Profile() {
 
       if (user) {
         const { restaurantList, pagination } = await getRestaurantList(user.data._id, myRestaurantParams.page);
-        if (restaurantList && pagination) {
-          setMyRestaurant(restaurantList);
-          setTotalPage(pagination.totalPages);
-        }
+        setMyRestaurant(restaurantList);
+        setTotalPage(pagination.totalPages);
       }
     }
 
@@ -42,7 +39,7 @@ export default function Profile() {
 
     if (localStorage.getItem("token")) getUser();
     getRestaurant();
-  }, [myRestaurantParams]);
+  }, []);
 
   const handleChange = async (files) => {
     if (files) {
@@ -82,11 +79,6 @@ export default function Profile() {
       <div class="container">
         <div class="col-lg-8" style={{ display: "contents" }}>
           <div class="panel profile-cover">
-            <Link to="/home">
-              <label className="px-5 mt-3" style={{ cursor: "pointer" }}>
-                Home
-              </label>
-            </Link>
             <div class="profile-cover__img">
               <label htmlFor="upload-button">
                 <img style={{ cursor: "pointer" }} src={!user.avatar ? `https://image.freepik.com/free-icon/upload-document_318-8461.jpg` : user.avatar} alt=""></img>
@@ -168,34 +160,29 @@ export default function Profile() {
             <div class="panel-content panel-activity">
               <ul class="panel-activity__list">
                 {myRestaurant && myRestaurant.length >= 0 ? (
-                  <>
-                    {myRestaurant.map((item) => (
-                      <li>
-                        <i class="activity__list__icon fa fa-question-circle-o"></i>
-                        <div class="activity__list__header">
-                          <a style={{ color: "red" }} href={"/restaurant/" + item.name + "+" + item._id}>
-                            {item.name}
-                          </a>
-                        </div>
-                        <div class="activity__list__body entry-content">
-                          <p>{item.address}</p>
-                        </div>
-                        <div class="activity__list__footer">
-                          <span>
-                            {" "}
-                            <i class="fa fa-clock"></i>
-                            {moment(`${item.createdAt}`).fromNow()}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
-                    <CustomPagination handlePageClick={handlePageClick} maxPages={totalPage} active={myRestaurantParams.page} />
-                  </>
+                  myRestaurant.map((item) => (
+                    <li>
+                      <i class="activity__list__icon fa fa-question-circle-o"></i>
+                      <div class="activity__list__header">
+                        <a style={{ color: "red" }} href={"/restaurant/" + item.name + "+" + item._id}>
+                          {item.name}
+                        </a>
+                      </div>
+                      <div class="activity__list__footer">
+                        <span>
+                          {" "}
+                          <i class="fa fa-clock"></i>
+                          {moment(`${item.createdAt}`).fromNow()}
+                        </span>
+                      </div>
+                    </li>
+                  ))
                 ) : (
                   <Spinner style={{ margin: "0 auto" }} animation="border" variant="danger" />
                 )}
               </ul>
             </div>
+            <CustomPagination handlePageClick={handlePageClick} maxPages={totalPage} active={searchParams.page} />
           </div>
         </div>
       </div>

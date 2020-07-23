@@ -31,6 +31,8 @@ function reducer(state = initialState, action) {
     }
 
     state.searchParams = { ...newParams };
+    // console.log(state.searchParams);
+    // state.isFiltering = action.payload.isFiltering;
   } else if (action.type === "REVIEWS") {
     let newParams = { ...state.reviewsParams };
     for (const [key, value] of Object.entries(action.payload.reviewsParams)) {

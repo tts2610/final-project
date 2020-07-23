@@ -30,7 +30,7 @@ export const getActivities = async (id) => {
 
 export const getRestaurantList = async (id, page) => {
   try {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/${id}?page=${page}&perPage=4`);
+    const res = await axios.get(`http://localhost:5000/restaurants/${id}?page=${page}&perPage=4`);
     console.log(res.data.data);
     return res.data.data;
   } catch (error) {

@@ -12,7 +12,6 @@ import AddNewRestaurant from "../../components/AddNewRestaurant/AddNewRestaurant
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
-import { Link } from "react-router-dom";
 
 export default function Profile() {
   const [user, setUser] = useState();
@@ -82,14 +81,9 @@ export default function Profile() {
       <div class="container">
         <div class="col-lg-8" style={{ display: "contents" }}>
           <div class="panel profile-cover">
-            <Link to="/home">
-              <label className="px-5 mt-3" style={{ cursor: "pointer" }}>
-                Home
-              </label>
-            </Link>
             <div class="profile-cover__img">
               <label htmlFor="upload-button">
-                <img style={{ cursor: "pointer" }} src={!user.avatar ? `https://image.freepik.com/free-icon/upload-document_318-8461.jpg` : user.avatar} alt=""></img>
+                <img style={{ cursor: "pointer" }} src={!user.avatar ? `https://wallpaperaccess.com/full/1699075.jpg` : user.avatar} alt=""></img>
               </label>
               <input type="file" id="upload-button" style={{ display: "none" }} onChange={(e) => handleChange(e.target.files)} />
               <h3 class="h3">{user.name}</h3>

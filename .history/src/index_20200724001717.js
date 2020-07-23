@@ -44,6 +44,8 @@ function reducer(state = initialState, action) {
     }
     state.myRestaurantParams = { ...newParams };
   }
+
+  console.log(state.myRestaurantParams);
   state = { ...state };
   return state;
 }

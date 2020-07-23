@@ -179,7 +179,7 @@ export default function AddNewRestaurant() {
   };
   return (
     <>
-      <div style={{ position: "absolute", zIndex: "10", top: "-15%", left: "50%" }} ref={ref}></div>
+      <div style={{ position: "absolute", zIndex: "10", top: "10%", left: "50%" }} ref={ref}></div>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
         <div>
           <Form autoComplete="off">

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { fetchUser } from "../../components/Header/HeaderAPI";
 import { useState } from "react";
 import { Form, Spinner } from "react-bootstrap";
-import { updateUser, getActivities, getRestaurantList } from "./ProfileAPI";
+import { updateUser, getActivities } from "./ProfileAPI";
 import StripeCheckout from "react-stripe-checkout";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,15 +12,11 @@ import AddNewRestaurant from "../../components/AddNewRestaurant/AddNewRestaurant
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import CustomPagination from "../../components/CustomPagination/CustomPagination";
-import { Link } from "react-router-dom";
-
+import { getRestaurantList } from "../../AppAPI";
 export default function Profile() {
   const [user, setUser] = useState();
   const [activities, setActivities] = useState([]);
   const [myRestaurant, setMyRestaurant] = useState([]);
-  const [totalPage, setTotalPage] = useState(0);
-  const myRestaurantParams = useSelector((state) => state.myRestaurantParams);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getUser() {
@@ -28,21 +24,17 @@ export default function Profile() {
       if (user) setUser(user.data);
       const { result } = await getActivities(user.data._id);
       setActivities(result);
-
-      if (user) {
-        const { restaurantList, pagination } = await getRestaurantList(user.data._id, myRestaurantParams.page);
-        if (restaurantList && pagination) {
-          setMyRestaurant(restaurantList);
-          setTotalPage(pagination.totalPages);
-        }
-      }
     }
 
-    async function getRestaurant() {}
+    async function getRestaurant() {
+      let restaurants;
+      if (user) restaurants = await getRestaurantList(user.data._id);
+      console.log(restaurants);
+    }
 
     if (localStorage.getItem("token")) getUser();
     getRestaurant();
-  }, [myRestaurantParams]);
+  }, []);
 
   const handleChange = async (files) => {
     if (files) {
@@ -70,11 +62,6 @@ export default function Profile() {
     }
   }
 
-  const handlePageClick = (e) => {
-    const clickValue = e.target.offsetParent.getAttribute("data-page") ? e.target.offsetParent.getAttribute("data-page") : e.target.getAttribute("data-page");
-    dispatch({ type: "MYRESTAURANT", payload: { myRestaurantParams: { page: clickValue } } });
-  };
-
   if (!user) return <></>;
   return (
     <div>
@@ -82,11 +69,6 @@ export default function Profile() {
       <div class="container">
         <div class="col-lg-8" style={{ display: "contents" }}>
           <div class="panel profile-cover">
-            <Link to="/home">
-              <label className="px-5 mt-3" style={{ cursor: "pointer" }}>
-                Home
-              </label>
-            </Link>
             <div class="profile-cover__img">
               <label htmlFor="upload-button">
                 <img style={{ cursor: "pointer" }} src={!user.avatar ? `https://image.freepik.com/free-icon/upload-document_318-8461.jpg` : user.avatar} alt=""></img>
@@ -161,42 +143,6 @@ export default function Profile() {
               </div>
             </div>
           )}
-          <div class="panel">
-            <div class="panel-heading">
-              <h3 class="panel-title">My restaurants</h3>
-            </div>
-            <div class="panel-content panel-activity">
-              <ul class="panel-activity__list">
-                {myRestaurant && myRestaurant.length >= 0 ? (
-                  <>
-                    {myRestaurant.map((item) => (
-                      <li>
-                        <i class="activity__list__icon fa fa-question-circle-o"></i>
-                        <div class="activity__list__header">
-                          <a style={{ color: "red" }} href={"/restaurant/" + item.name + "+" + item._id}>
-                            {item.name}
-                          </a>
-                        </div>
-                        <div class="activity__list__body entry-content">
-                          <p>{item.address}</p>
-                        </div>
-                        <div class="activity__list__footer">
-                          <span>
-                            {" "}
-                            <i class="fa fa-clock"></i>
-                            {moment(`${item.createdAt}`).fromNow()}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
-                    <CustomPagination handlePageClick={handlePageClick} maxPages={totalPage} active={myRestaurantParams.page} />
-                  </>
-                ) : (
-                  <Spinner style={{ margin: "0 auto" }} animation="border" variant="danger" />
-                )}
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </div>

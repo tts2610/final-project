@@ -83,9 +83,7 @@ export default function Profile() {
         <div class="col-lg-8" style={{ display: "contents" }}>
           <div class="panel profile-cover">
             <Link to="/home">
-              <label className="px-5 mt-3" style={{ cursor: "pointer" }}>
-                Home
-              </label>
+              <label className="px-5 mt-3">Home</label>
             </Link>
             <div class="profile-cover__img">
               <label htmlFor="upload-button">
