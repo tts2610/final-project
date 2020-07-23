@@ -61,6 +61,7 @@ export default function Profile() {
         <div class="col-lg-8" style={{ display: "contents" }}>
           <div class="panel profile-cover">
             <div class="profile-cover__img">
+              <h5>Home</h5>
               <label htmlFor="upload-button">
                 <img style={{ cursor: "pointer" }} src={!user.avatar ? `https://image.freepik.com/free-icon/upload-document_318-8461.jpg` : user.avatar} alt=""></img>
               </label>
@@ -85,7 +86,7 @@ export default function Profile() {
             </div>
             <div class="panel-content panel-activity">
               <ul class="panel-activity__list">
-                {activities && activities.length >= 0 ? (
+                {activities && activities.length !== 0 ? (
                   activities.map((item) => (
                     <li>
                       <i class="activity__list__icon fa fa-question-circle-o"></i>

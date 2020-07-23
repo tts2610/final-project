@@ -85,7 +85,7 @@ export default function Profile() {
             </div>
             <div class="panel-content panel-activity">
               <ul class="panel-activity__list">
-                {activities && activities.length >= 0 ? (
+                {activities && activities.length !== 0 ? (
                   activities.map((item) => (
                     <li>
                       <i class="activity__list__icon fa fa-question-circle-o"></i>

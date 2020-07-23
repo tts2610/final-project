@@ -59,6 +59,7 @@ export default function Profile() {
       {/* <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> */}
       <div class="container">
         <div class="col-lg-8" style={{ display: "contents" }}>
+          <h5>Home</h5>
           <div class="panel profile-cover">
             <div class="profile-cover__img">
               <label htmlFor="upload-button">
@@ -85,7 +86,7 @@ export default function Profile() {
             </div>
             <div class="panel-content panel-activity">
               <ul class="panel-activity__list">
-                {activities && activities.length >= 0 ? (
+                {activities && activities.length !== 0 ? (
                   activities.map((item) => (
                     <li>
                       <i class="activity__list__icon fa fa-question-circle-o"></i>
