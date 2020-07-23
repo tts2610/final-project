@@ -29,7 +29,7 @@ export default function FoodCard({ item }) {
     // }
     // getItemDistance();
     async function getReview() {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/review/${item._id}`);
+      const res = await axios.get(`http://localhost:5000/review/${item._id}`);
       const { reviewList } = res.data.data;
       if (reviewList) setCountReview(reviewList.length);
     }

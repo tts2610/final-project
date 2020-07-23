@@ -9,7 +9,6 @@ import axios from "axios";
 
 export default function FoodCard({ item }) {
   const [distance, setDistance] = useState(0);
-  const [countReview, setCountReview] = useState(0);
   const history = useHistory();
   const StyledRating = withStyles({
     iconFilled: {
@@ -25,16 +24,15 @@ export default function FoodCard({ item }) {
     // async function getItemDistance() {
     //   let distance = await getDistance({ lat1: localStorage.getItem("currentLat"), lon1: localStorage.getItem("currentLat"), lat2: item.latitude, lon2: item.longitude });
     //   // distance = distance * 1000;
-    //   setDistance(Math.floor(distance)); ${process.env.REACT_APP_API_URL}
+    //   setDistance(Math.floor(distance));
     // }
     // getItemDistance();
     async function getReview() {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/review/${item._id}`);
-      const { reviewList } = res.data.data;
-      if (reviewList) setCountReview(reviewList.length);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/review/${item._id}?page=&perPage=`);
+      console.log(res.data.data);
     }
     getReview();
-  }, [item]);
+  }, []);
 
   return (
     <div className="mt-4 mr-4" onClick={cardCliked}>
@@ -53,7 +51,7 @@ export default function FoodCard({ item }) {
             </Col>
             <Col className="badge-col">
               <Badge className="py-2 px-2" variant="info">
-                {countReview} reviews
+                198 reviews
               </Badge>
             </Col>
           </Row>

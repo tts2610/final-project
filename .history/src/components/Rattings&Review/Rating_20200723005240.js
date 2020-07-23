@@ -15,7 +15,6 @@ export default function Rating({ restaurant }) {
   const [isInsertedReview, setIsInsertedReview] = useState(false);
 
   const [totalPage, setTotalPage] = useState(0);
-  const [maxCount, setMaxCount] = useState(0);
 
   const reviewsParams = useSelector((state) => state.reviewsParams);
   const dispatch = useDispatch();
@@ -77,7 +76,7 @@ export default function Rating({ restaurant }) {
     async function getReview() {
       const { reviewList, pagination } = await getReivewByRestaurantID(restaurant._id, reviewsParams.page);
       setReview(reviewList);
-      setMaxCount(pagination.maxCount);
+      console.log(pagination);
       setTotalPage(pagination.totalPages);
     }
     getReview();
@@ -106,7 +105,7 @@ export default function Rating({ restaurant }) {
                 </div>
                 <div className="white-tab p-2 mx-2 text-muted">
                   <p className="sm-text mb-0">ALL REVIEWS</p>
-                  <h4>{maxCount}</h4>
+                  <h4>{totalPages}</h4>
                 </div>
                 <div className="white-tab p-2 mx-2">
                   <p className="sm-text mb-0 text-muted">POSITIVE REVIEWS</p>
