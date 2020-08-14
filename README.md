@@ -21,4 +21,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ![alt img1](https://res.cloudinary.com/da5mx5vau/image/upload/v1597415175/Screen_Shot_2020-08-14_at_9.11.30_PM_bk6uzw.png)
 
 ## Production URL
-Comming soon...
+https://sean-foody.netlify.app/
