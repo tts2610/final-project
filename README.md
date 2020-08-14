@@ -15,5 +15,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Technology stack: ReactJS(Redux), NodeJS (Express), MongoDB, GoogleAPI, FacebookAPI.
 
 ## Screenshots
-<img src="https://drive.google.com/file/d/1yC7Tw-0WDtZ2Tfqyp2QCC31pIqhiCLB9/view?usp=sharing">
-
+![alt text](https://drive.google.com/file/d/1yC7Tw-0WDtZ2Tfqyp2QCC31pIqhiCLB9/view?usp=sharing)
