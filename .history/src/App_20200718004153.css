@@ -142,28 +142,6 @@ hr {
     background-color: white;
 }
 
-@media (min-width: 400px) {
-    .root-page .findAdress-form {
-        /* height: 40%; */
-        width: 100%;
-        padding: 50px 20px 50px 20px;
-        border-radius: 5px;
-        /* padding-top: 20vh; */
-        background-color: white;
-    }
-}
-
-@media (min-width: 992px) {
-    .root-page .findAdress-form {
-        /* height: 40%; */
-        width: 30%;
-        padding: 50px 20px 50px 20px;
-        border-radius: 5px;
-        /* padding-top: 20vh; */
-        background-color: white;
-    }
-}
-
 .root-page .findAdress-form button {
     width: 100%;
 }

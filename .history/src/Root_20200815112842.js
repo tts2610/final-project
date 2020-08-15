@@ -13,7 +13,7 @@ export default function Root() {
           <div className="col">
             <div className="findAdress-form">
               <h5>Good Evening</h5>
-              <h1 style={{ overflow: "hidden", textOverflow: "ellipsis" }}>Let's explore good food near you.</h1>
+              <h1>Let's explore good food near you.</h1>
               <Form className="mt-4">
                 <Form.Group controlId="formBasicEmail">
                   <div className="search">

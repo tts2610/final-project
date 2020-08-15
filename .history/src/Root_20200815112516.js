@@ -9,20 +9,16 @@ export default function Root() {
   return (
     <div className="page root-page">
       <Container>
-        <div className="row">
-          <div className="col">
-            <div className="findAdress-form">
-              <h5>Good Evening</h5>
-              <h1 style={{ overflow: "hidden", textOverflow: "ellipsis" }}>Let's explore good food near you.</h1>
-              <Form className="mt-4">
-                <Form.Group controlId="formBasicEmail">
-                  <div className="search">
-                    <Search />
-                  </div>
-                </Form.Group>
-              </Form>
-            </div>
-          </div>
+        <div className="findAdress-form">
+          <h5>Good Evening</h5>
+          <h1>Let's explore good food near you.</h1>
+          <Form className="mt-4">
+            <Form.Group controlId="formBasicEmail">
+              <div className="search">
+                <Search />
+              </div>
+            </Form.Group>
+          </Form>
         </div>
       </Container>
     </div>

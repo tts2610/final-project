@@ -6,25 +6,31 @@ import "@reach/combobox/styles.css";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 
 export default function Root() {
+  // return (
+  //   <div className="page root-page">
+  //     <Container>
+  //       <div className="findAdress-form">
+  //         <h5>Good Evening</h5>
+  //         <h1>Let's explore good food near you.</h1>
+  //         <Form className="mt-4">
+  //           <Form.Group controlId="formBasicEmail">
+  //             <div className="search">
+  //               <Search />
+  //             </div>
+  //           </Form.Group>
+  //         </Form>
+  //       </div>
+  //     </Container>
+  //   </div>
+  // );
   return (
-    <div className="page root-page">
-      <Container>
-        <div className="row">
-          <div className="col">
-            <div className="findAdress-form">
-              <h5>Good Evening</h5>
-              <h1 style={{ overflow: "hidden", textOverflow: "ellipsis" }}>Let's explore good food near you.</h1>
-              <Form className="mt-4">
-                <Form.Group controlId="formBasicEmail">
-                  <div className="search">
-                    <Search />
-                  </div>
-                </Form.Group>
-              </Form>
-            </div>
-          </div>
+    <div>
+      <Image fluid src="/images/first-page-banner-3.jpg"></Image>
+      <div className="row justify-content-md-center">
+        <div className="col-12 col-md-8" style={{ backgroundColor: "white", position: "absolute", top: "0px" }}>
+          aaaaaaa
         </div>
-      </Container>
+      </div>
     </div>
   );
 }
